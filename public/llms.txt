@@ -1,0 +1,28 @@
+# Stories That Lead — Podcast by Vernon Ross
+# https://storiesthatlead.com
+
+## About
+Stories That Lead is a podcast for communications leaders navigating AI disruption in enterprise environments. Hosted by Vernon Ross, the show features strategic frameworks, real-world case studies, and actionable insights for Fortune 500 communications teams.
+
+## Host
+Vernon Ross is an Enterprise Podcaster and communications consultant who helps Fortune 500 teams integrate AI into their workflows. He is the creator of the Micro-Arc Framework (a revelation-based podcast storytelling methodology adapted from Kishōtenketsu) and the Voice Note Blueprint (a voice-first content capture system for leadership teams).
+
+## Core Topics
+- AI implementation in corporate communications
+- Enterprise podcast production and strategy
+- Internal communications transformation
+- The Micro-Arc Framework for storytelling
+- The Voice Note Blueprint for leadership content
+- Communications team workflow optimization
+
+## Key Frameworks
+1. The Micro-Arc Framework: A four-act storytelling structure (Ki-Shō-Ten-Ketsu) adapted for enterprise podcast production. Structures narrative around revelation instead of conflict.
+2. The Voice Note Blueprint: A structured system for turning executive voice notes into polished podcast episodes and leadership content.
+
+## Tagline
+Not Conflict. Revelation.
+
+## Contact
+Vernon Ross — vernon@vernonross.com
+Website: https://vernonross.com
+LinkedIn: https://linkedin.com/in/vernonross
