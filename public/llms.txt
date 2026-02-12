@@ -2,22 +2,26 @@
 # https://storiesthatlead.com
 
 ## About
-Stories That Lead is a podcast for communications leaders navigating AI disruption in enterprise environments. Hosted by Vernon Ross, the show features strategic frameworks, real-world case studies, and actionable insights for Fortune 500 communications teams.
+Stories That Lead is a podcast where leaders reveal the frameworks behind the moments that changed everything. Hosted by Vernon Ross, the show features strategic storytelling frameworks, AI implementation strategies, and real-world leadership insights — structured how leaders actually think. Not conflict. Revelation.
 
 ## Host
-Vernon Ross is an Enterprise Podcaster and communications consultant who helps Fortune 500 teams integrate AI into their workflows. He is the creator of the Micro-Arc Framework (a revelation-based podcast storytelling methodology adapted from Kishōtenketsu) and the Voice Note Blueprint (a voice-first content capture system for leadership teams).
+Vernon Ross is an Enterprise Podcaster and leadership storytelling consultant who helps leaders tell the stories that drive transformation. He is the creator of the Micro-Arc Framework (a revelation-based podcast storytelling methodology adapted from Kishōtenketsu) and the Voice Note Blueprint (a voice-first content capture system for leadership teams).
 
 ## Core Topics
-- AI implementation in corporate communications
+- Leadership storytelling frameworks
+- AI implementation for enterprise teams
+- The Micro-Arc Framework (Kishōtenketsu-based storytelling)
+- The Voice Note Blueprint for leadership content
 - Enterprise podcast production and strategy
 - Internal communications transformation
-- The Micro-Arc Framework for storytelling
-- The Voice Note Blueprint for leadership content
-- Communications team workflow optimization
+- Leadership decision-making and organizational change
 
 ## Key Frameworks
 1. The Micro-Arc Framework: A four-act storytelling structure (Ki-Shō-Ten-Ketsu) adapted for enterprise podcast production. Structures narrative around revelation instead of conflict.
 2. The Voice Note Blueprint: A structured system for turning executive voice notes into polished podcast episodes and leadership content.
+
+## Who This Is For
+CEOs, senior executives, VPs, directors, founders, communications leaders, and anyone who leads people through change. Stories That Lead serves leaders across industries who need frameworks — not formulas — for sharing the moments that matter.
 
 ## Tagline
 Not Conflict. Revelation.

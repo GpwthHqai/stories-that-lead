@@ -17,16 +17,21 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Stories That Lead — Not Conflict. Revelation. | Vernon Ross",
   description:
-    "A podcast for communications leaders navigating AI disruption. Enterprise storytelling frameworks that drive understanding, not drama. Hosted by Vernon Ross.",
+    "Leaders reveal the frameworks behind the moments that changed everything. A podcast with strategic storytelling frameworks, AI implementation strategies, and real-world leadership insights. Hosted by Vernon Ross.",
   keywords: [
+    "leadership podcast",
     "enterprise podcast",
-    "internal communications",
-    "AI communications",
-    "corporate storytelling",
+    "storytelling frameworks",
+    "AI implementation",
+    "leadership storytelling",
     "Vernon Ross",
     "Stories That Lead",
+    "Micro-Arc Framework",
+    "Kishōtenketsu",
+    "corporate storytelling",
+    "leadership frameworks",
+    "AI for leaders",
     "communications leadership",
-    "podcast for leaders",
   ],
   authors: [{ name: "Vernon Ross" }],
   creator: "Vernon Ross",
@@ -37,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "Stories That Lead",
     title: "Stories That Lead — Not Conflict. Revelation.",
     description:
-      "A podcast for communications leaders navigating AI disruption. Enterprise storytelling frameworks that drive understanding, not drama.",
+      "Leaders reveal the frameworks behind the moments that changed everything. Strategic storytelling and AI implementation for leaders who think differently.",
     images: [
       {
         url: "/images/og-image.jpg",
@@ -51,7 +56,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Stories That Lead — Not Conflict. Revelation.",
     description:
-      "A podcast for communications leaders navigating AI disruption. Hosted by Vernon Ross.",
+      "Leaders reveal the frameworks behind the moments that changed everything. Hosted by Vernon Ross.",
     images: ["/images/og-image.jpg"],
   },
   robots: {
@@ -84,18 +89,19 @@ export default function RootLayout({
               "@type": "PodcastSeries",
               name: "Stories That Lead",
               description:
-                "A podcast for communications leaders navigating AI disruption. Enterprise storytelling frameworks that drive understanding, not drama.",
+                "Leaders reveal the frameworks behind the moments that changed everything. Strategic storytelling and AI implementation insights structured how leaders actually think.",
               author: {
                 "@type": "Person",
                 name: "Vernon Ross",
-                jobTitle: "Enterprise Podcaster & Communications Consultant",
+                jobTitle: "Enterprise Podcaster & Leadership Storytelling Consultant",
                 url: "https://vernonross.com",
               },
               genre: [
                 "Business",
-                "Communications",
                 "Leadership",
+                "Storytelling",
                 "Technology",
+                "Communications",
               ],
               inLanguage: "en",
               image: "/images/og-image.jpg",
@@ -109,14 +115,16 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Vernon Ross",
-              jobTitle: "Enterprise Podcaster & Communications Consultant",
+              jobTitle: "Enterprise Podcaster & Leadership Storytelling Consultant",
               description:
-                "Vernon Ross helps Fortune 500 communications teams integrate AI into their workflows through strategic podcast consulting and proprietary frameworks.",
+                "Vernon Ross helps leaders tell the stories that drive transformation. Creator of the Micro-Arc Framework and Voice Note Blueprint — proprietary methodologies that structure narrative around revelation instead of conflict.",
               knowsAbout: [
+                "Leadership Storytelling",
                 "Enterprise Communications",
-                "Internal Podcasting",
-                "AI in Communications",
-                "Corporate Storytelling",
+                "AI Implementation",
+                "Podcast Production",
+                "The Micro-Arc Framework",
+                "Kishōtenketsu",
               ],
             }),
           }}

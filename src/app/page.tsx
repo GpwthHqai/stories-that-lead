@@ -87,7 +87,6 @@ function EmailSignupForm({
     setStatus("loading");
 
     try {
-      // SendFox API integration
       const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -165,6 +164,361 @@ function EmailSignupForm({
   );
 }
 
+// ─── Leadership Framework Assessment ─────────────────────────────────────────
+const assessmentQuestions = [
+  {
+    question: "What best describes your role?",
+    options: [
+      "C-Suite / Senior Executive",
+      "VP / Director",
+      "Manager / Team Lead",
+      "Founder / Entrepreneur",
+    ],
+  },
+  {
+    question:
+      "What\u2019s the biggest challenge you\u2019re navigating right now?",
+    options: [
+      "Leading my team through AI disruption",
+      "Telling my organization\u2019s story during change",
+      "Getting leadership buy-in for new initiatives",
+      "Scaling my team\u2019s impact without scaling headcount",
+    ],
+  },
+  {
+    question:
+      "How does your team currently share big decisions or changes?",
+    options: [
+      "Email blasts and memos",
+      "Town halls and all-hands meetings",
+      "Podcasts, video, or audio content",
+      "We don\u2019t have a structured approach",
+    ],
+  },
+  {
+    question:
+      "How would you describe your organization\u2019s relationship with AI?",
+    options: [
+      "We haven\u2019t started yet",
+      "We\u2019re experimenting with a few tools",
+      "We\u2019ve integrated AI into some workflows",
+      "AI is embedded in most of what we do",
+    ],
+  },
+  {
+    question: "What would make the biggest difference for you right now?",
+    options: [
+      "A framework for storytelling that doesn\u2019t feel corporate",
+      "Practical AI implementation strategies for my team",
+      "A way to capture and scale leadership thinking",
+      "A community of leaders navigating the same challenges",
+    ],
+  },
+];
+
+type ProfileResult = {
+  type: string;
+  emoji: string;
+  description: string;
+  recommendations: string[];
+  cta: string;
+};
+
+function getProfile(answers: number[]): ProfileResult {
+  const challenge = answers[1] ?? 0;
+  const difference = answers[4] ?? 0;
+
+  if (challenge === 1 || difference === 0) {
+    return {
+      type: "The Strategic Narrator",
+      emoji: "\uD83C\uDFAF",
+      description:
+        "You see the power of story in leadership but need a framework that matches how leaders actually think \u2014 not Hollywood screenwriting templates.",
+      recommendations: [
+        "The Micro-Arc Framework deep-dive episodes",
+        "Case studies on revelation-based leadership storytelling",
+        "Guest interviews with leaders who transformed organizations through narrative",
+      ],
+      cta: "Let\u2019s map your leadership story to the Micro-Arc Framework.",
+    };
+  }
+
+  if (challenge === 0 || difference === 1) {
+    return {
+      type: "The AI Pioneer",
+      emoji: "\u26A1",
+      description:
+        "You\u2019re leading your team through AI disruption and need practical strategies \u2014 not hype. You want to know what\u2019s actually working inside organizations like yours.",
+      recommendations: [
+        "AI implementation case studies from Fortune 500 teams",
+        "The Voice Note Blueprint for AI-assisted content creation",
+        "Framework episodes on building AI-ready teams",
+      ],
+      cta: "Let\u2019s build your team\u2019s AI implementation roadmap.",
+    };
+  }
+
+  if (challenge === 3 || difference === 2) {
+    return {
+      type: "The Framework Builder",
+      emoji: "\uD83C\uDFD7\uFE0F",
+      description:
+        "You need structured systems to scale your leadership thinking across teams. Ad hoc isn\u2019t cutting it anymore \u2014 you need repeatable frameworks.",
+      recommendations: [
+        "The Voice Note Blueprint for capturing leadership insights at scale",
+        "Enterprise workflow optimization episodes",
+        "Framework episodes on systemizing team communication",
+      ],
+      cta: "Let\u2019s design the framework your team needs.",
+    };
+  }
+
+  return {
+    type: "The Movement Maker",
+    emoji: "\uD83D\uDE80",
+    description:
+      "You\u2019re not just leading a team \u2014 you\u2019re building a movement. You need to get buy-in, build community, and scale your influence beyond your immediate circle.",
+    recommendations: [
+      "Episodes on leadership buy-in and organizational change",
+      "Case studies on leaders who built movements inside enterprises",
+      "Community and direct access through founding membership",
+    ],
+    cta: "Let\u2019s talk about scaling your leadership impact.",
+  };
+}
+
+function LeadershipAssessment() {
+  // 0 = intro, 1-5 = questions, 6 = email capture, 7 = results
+  const [step, setStep] = useState(0);
+  const [answers, setAnswers] = useState<number[]>([]);
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+
+  const handleAnswer = (answerIndex: number) => {
+    setSelectedAnswer(answerIndex);
+    setTimeout(() => {
+      setAnswers((prev) => [...prev, answerIndex]);
+      setStep((prev) => prev + 1);
+      setSelectedAnswer(null);
+    }, 300);
+  };
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setStatus("loading");
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          first_name: firstName,
+          source: "assessment",
+        }),
+      });
+      if (response.ok) {
+        setStatus("success");
+        setStep(7);
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  // Intro
+  if (step === 0) {
+    return (
+      <div className="text-center">
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs mb-6">
+          2-MINUTE ASSESSMENT
+        </div>
+        <h3
+          className="text-2xl lg:text-3xl font-bold"
+          style={{ fontFamily: "var(--font-playfair), serif" }}
+        >
+          Discover Your{" "}
+          <span className="text-gold">Leadership Story Framework</span>
+        </h3>
+        <p className="text-gray-300 mt-4 max-w-lg mx-auto leading-relaxed">
+          Answer 5 quick questions to uncover which storytelling and leadership
+          framework fits your role &mdash; plus get personalized episode
+          recommendations when we launch.
+        </p>
+        <button
+          onClick={() => setStep(1)}
+          className="mt-8 px-8 py-4 bg-gold hover:bg-gold-light text-navy-dark font-bold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-gold/20 text-lg"
+        >
+          Start the Assessment
+        </button>
+      </div>
+    );
+  }
+
+  // Questions
+  if (step >= 1 && step <= 5) {
+    const q = assessmentQuestions[step - 1];
+    return (
+      <div>
+        <div className="flex items-center gap-3 mb-8">
+          <span className="text-gold text-sm font-semibold">{step}/5</span>
+          <div className="flex-1 h-1.5 bg-navy-light/30 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-gold rounded-full transition-all duration-500"
+              style={{ width: `${(step / 5) * 100}%` }}
+            />
+          </div>
+        </div>
+
+        <h3 className="text-xl lg:text-2xl font-bold text-white mb-6">
+          {q.question}
+        </h3>
+
+        <div className="grid gap-3">
+          {q.options.map((option, i) => (
+            <button
+              key={i}
+              onClick={() => handleAnswer(i)}
+              className={`w-full text-left px-6 py-4 border rounded-xl transition-all duration-200 group ${
+                selectedAnswer === i
+                  ? "bg-gold/10 border-gold/50 text-gold"
+                  : "bg-navy-dark/60 border-navy-light/30 text-gray-200 hover:border-gold/50 hover:bg-navy-dark/80"
+              }`}
+            >
+              <span
+                className={`transition-colors ${
+                  selectedAnswer === i
+                    ? "text-gold"
+                    : "group-hover:text-gold"
+                }`}
+              >
+                {option}
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Email capture
+  if (step === 6) {
+    return (
+      <div className="text-center">
+        <div className="text-4xl mb-4">&#10024;</div>
+        <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">
+          Your results are ready.
+        </h3>
+        <p className="text-gray-300 mb-6">
+          Enter your email to see your personalized leadership framework
+          profile and get founding member access.
+        </p>
+        <form onSubmit={handleEmailSubmit} className="max-w-md mx-auto">
+          <div className="flex flex-col gap-3">
+            <input
+              type="text"
+              placeholder="First name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+              className="w-full px-4 py-3 bg-navy-dark/60 border border-navy-light/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-gold transition-colors"
+            />
+            <input
+              type="email"
+              placeholder="Email address"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="w-full px-4 py-3 bg-navy-dark/60 border border-navy-light/30 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-gold transition-colors"
+            />
+            <button
+              type="submit"
+              disabled={status === "loading"}
+              className="w-full px-6 py-3 bg-gold hover:bg-gold-light text-navy-dark font-bold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-gold/20 disabled:opacity-60"
+            >
+              {status === "loading" ? "Loading..." : "See My Results"}
+            </button>
+          </div>
+          {status === "error" && (
+            <p className="text-red-400 text-sm mt-2">
+              Something went wrong. Please try again.
+            </p>
+          )}
+          <p className="text-gray-500 text-xs mt-3">
+            No spam. Unsubscribe anytime.
+          </p>
+        </form>
+      </div>
+    );
+  }
+
+  // Results
+  if (step === 7) {
+    const profile = getProfile(answers);
+    return (
+      <div>
+        <div className="text-center mb-8">
+          <div className="text-5xl mb-4">{profile.emoji}</div>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full text-gold text-sm mb-4">
+            YOUR PROFILE
+          </div>
+          <h3
+            className="text-2xl lg:text-3xl font-bold text-gold"
+            style={{ fontFamily: "var(--font-playfair), serif" }}
+          >
+            {profile.type}
+          </h3>
+          <p className="text-gray-300 mt-4 max-w-lg mx-auto leading-relaxed">
+            {profile.description}
+          </p>
+        </div>
+
+        <div className="bg-navy-dark/60 border border-navy-light/20 rounded-xl p-6 mb-8">
+          <h4 className="text-sm font-semibold text-gold uppercase tracking-wider mb-4">
+            Your Recommended Starting Point
+          </h4>
+          <ul className="space-y-3">
+            {profile.recommendations.map((rec, i) => (
+              <li
+                key={i}
+                className="flex items-start gap-3 text-gray-300 text-sm"
+              >
+                <span className="text-gold mt-0.5 flex-shrink-0">
+                  &#10003;
+                </span>
+                {rec}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="text-center">
+          <p className="text-gray-300 mb-4">{profile.cta}</p>
+          {/* ── Update this URL with your Book Like a Boss link ── */}
+          <a
+            href="https://vernonross.booklikeaboss.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-4 bg-gold hover:bg-gold-light text-navy-dark font-bold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-gold/20 text-lg"
+          >
+            Book a Strategy Call
+          </a>
+          <p className="text-gray-500 text-xs mt-3">
+            Free 20-minute call. No pitch. Just frameworks.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  return null;
+}
+
 // ─── Main Page ───────────────────────────────────────────────────────────────
 export default function Home() {
   return (
@@ -190,12 +544,10 @@ export default function Home() {
 
       {/* ── Hero Section ── */}
       <section className="relative min-h-screen flex items-center pt-20">
-        {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-navy-dark via-navy to-navy-dark" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--color-navy-light)_0%,_transparent_60%)] opacity-40" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left: Copy */}
           <div className="text-center lg:text-left">
             <div className="animate-fade-in-up">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full text-gold text-sm mb-6">
@@ -222,8 +574,8 @@ export default function Home() {
             </div>
 
             <p className="animate-fade-in-up-delay-2 text-gray-300 text-lg lg:text-xl mt-6 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              A podcast for communications leaders who are being asked to do
-              more with AI — and need a framework, not a firehose.
+              Leaders reveal the frameworks behind the moments that changed
+              everything. Stories structured how leaders actually think.
             </p>
 
             <div className="animate-fade-in-up-delay-3 mt-8" id="signup">
@@ -234,14 +586,14 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right: Cover art */}
+          {/* Desktop cover art */}
           <div className="animate-fade-in-up-delay-2 hidden lg:block">
             <div className="relative">
               <div className="absolute -left-3 top-8 bottom-8 w-1 bg-gradient-to-b from-gold via-gold-light to-transparent rounded-full" />
               <div className="rounded-2xl overflow-hidden shadow-2xl shadow-black/30 border border-navy-light/30">
                 <Image
                   src="/images/cover-square.webp"
-                  alt="Stories That Lead Podcast — Vernon Ross"
+                  alt="Stories That Lead Podcast \u2014 Vernon Ross"
                   width={600}
                   height={600}
                   priority
@@ -256,7 +608,7 @@ export default function Home() {
             <div className="rounded-2xl overflow-hidden shadow-2xl shadow-black/30 border border-navy-light/30 max-w-sm mx-auto">
               <Image
                 src="/images/cover-square.webp"
-                alt="Stories That Lead Podcast — Vernon Ross"
+                alt="Stories That Lead Podcast \u2014 Vernon Ross"
                 width={400}
                 height={400}
                 priority
@@ -266,7 +618,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
           <span className="text-xs text-gray-400 uppercase tracking-widest">
             Scroll
@@ -284,7 +635,7 @@ export default function Home() {
           <CountdownTimer targetDate="2026-03-31T09:00:00-04:00" />
           <p className="text-gray-400 text-sm mt-8 max-w-md mx-auto">
             Join the founding members list for early episode access, exclusive
-            content, and behind-the-scenes updates.
+            frameworks, and behind-the-scenes updates.
           </p>
         </div>
       </section>
@@ -297,18 +648,18 @@ export default function Home() {
             className="text-3xl lg:text-4xl font-bold leading-tight"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            Your team is being asked to do more with AI.
+            Every leader has a moment that changed everything.
             <br />
             <span className="text-gold">
-              You need a framework, not a firehose.
+              Most never learn to tell that story.
             </span>
           </h2>
           <p className="text-gray-300 text-lg mt-8 leading-relaxed max-w-2xl mx-auto">
-            Every week, there&apos;s a new AI tool, a new mandate from
-            leadership, and a team looking to you for direction. Most podcast
-            content gives you hype. Stories That Lead gives you the strategic
-            thinking and real-world frameworks that Fortune 500 communications
-            leaders actually use.
+            The decision under pressure. The transformation that worked. The
+            framework others need but can&apos;t find. Most podcasts chase
+            conflict and drama. Stories That Lead chases the revelation &mdash;
+            the strategic thinking and real-world frameworks behind pivotal
+            leadership moments.
           </p>
         </div>
       </section>
@@ -325,29 +676,29 @@ export default function Home() {
               What to Expect
             </h2>
             <p className="text-gray-400 mt-4 text-lg">
-              Select your path. Every episode delivers something different.
+              Every episode delivers frameworks you can use Monday morning.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                icon: "🎙",
-                title: "For Comms Leaders",
+                icon: "\uD83C\uDFAF",
+                title: "Leadership Frameworks",
                 description:
-                  "AI implementation strategies, team workflow frameworks, and real case studies from Fortune 500 communications teams navigating the shift.",
+                  "Real frameworks from leaders who\u2019ve navigated transformation. Not theory \u2014 the actual decision-making processes behind pivotal moments.",
               },
               {
-                icon: "📊",
-                title: "For Executives",
+                icon: "\uD83C\uDFA4",
+                title: "Strategic Storytelling",
                 description:
-                  "Strategic insights on how AI is reshaping internal communications. The perspective shifts your team needs but can\u2019t articulate yet.",
+                  "The Micro-Arc Framework: a revelation-based storytelling structure adapted from Kish\u014Dtenketsu. Stories built around insight, not conflict.",
               },
               {
-                icon: "🛠",
-                title: "For Practitioners",
+                icon: "\u26A1",
+                title: "AI Implementation",
                 description:
-                  "The Micro-Arc Framework, Voice Note Blueprint, and practical tools you can use Monday morning to produce better content faster.",
+                  "Practical strategies for integrating AI into your team\u2019s workflow. What\u2019s actually working inside Fortune 500 organizations right now.",
               },
             ].map((card) => (
               <div
@@ -367,58 +718,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Lead Magnet Section ── */}
-      <section className="py-24 bg-navy-dark" id="lead-magnet">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="bg-gradient-to-br from-navy via-navy-light/20 to-navy border border-navy-light/30 rounded-2xl p-8 lg:p-12 grid lg:grid-cols-2 gap-10 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-gold/10 border border-gold/20 rounded-full text-gold text-xs mb-4">
-                FREE RESOURCE
-              </div>
-              <h2
-                className="text-2xl lg:text-3xl font-bold leading-tight"
-                style={{ fontFamily: "var(--font-playfair), serif" }}
-              >
-                AI Readiness Assessment
-                <br />
-                <span className="text-gold">for Communications Teams</span>
-              </h2>
-              <p className="text-gray-300 mt-4 leading-relaxed">
-                Where does your team stand on AI adoption? This checklist helps
-                you identify gaps, prioritize tools, and build a 90-day
-                implementation roadmap — without the overwhelm.
-              </p>
-              <ul className="mt-6 space-y-3">
-                {[
-                  "25-point readiness assessment across 5 key dimensions",
-                  "Scoring rubric with actionable next steps for each level",
-                  "90-day quick-start implementation timeline",
-                  "Tool recommendation matrix matched to team size",
-                ].map((item) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-gray-300 text-sm"
-                  >
-                    <span className="text-gold mt-0.5 flex-shrink-0">
-                      &#10003;
-                    </span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <div className="bg-navy-dark/60 rounded-xl p-6 border border-navy-light/20">
-                <p className="text-center text-sm text-gray-400 mb-4">
-                  Get instant access — delivered to your inbox.
-                </p>
-                <EmailSignupForm
-                  variant="lead-magnet"
-                  buttonText="Send Me the Checklist"
-                />
-              </div>
-            </div>
+      {/* ── Interactive Assessment ── */}
+      <section className="py-24 bg-navy-dark" id="assessment">
+        <div className="max-w-2xl mx-auto px-6">
+          <div className="bg-gradient-to-br from-navy via-navy-light/10 to-navy border border-navy-light/30 rounded-2xl p-8 lg:p-12">
+            <LeadershipAssessment />
           </div>
         </div>
       </section>
@@ -440,28 +744,28 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 gap-6 mt-12 text-left">
             {[
               {
-                icon: "⚡",
+                icon: "\u26A1",
                 title: "Early Episode Access",
                 description:
-                  "Get every episode 48 hours before public release. Be the first to apply insights to your team.",
+                  "Get every episode 48 hours before public release. Be the first to apply frameworks to your team.",
               },
               {
-                icon: "🔒",
+                icon: "\uD83D\uDD12",
                 title: "Exclusive Bonus Content",
                 description:
                   "Extended interviews, framework deep-dives, and behind-the-scenes content only founding members receive.",
               },
               {
-                icon: "💬",
+                icon: "\uD83D\uDCAC",
                 title: "Direct Access",
                 description:
                   "Shape the show\u2019s direction. Submit questions, suggest guests, and get responses directly from Vernon.",
               },
               {
-                icon: "📋",
-                title: "AI Readiness Checklist",
+                icon: "\uD83C\uDFAF",
+                title: "Leadership Framework Assessment",
                 description:
-                  "Immediate access to the AI Readiness Assessment for Communications Teams \u2014 a practical tool you can use today.",
+                  "Immediate access to the personalized assessment that matches your leadership profile to the right frameworks and episodes.",
               },
             ].map((perk) => (
               <div
@@ -479,7 +783,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── About Vernon ── */}
+      {/* ── Why I Built This ── */}
       <section className="py-24 bg-navy-dark">
         <div className="max-w-5xl mx-auto px-6">
           <div className="grid lg:grid-cols-5 gap-12 items-center">
@@ -489,9 +793,9 @@ export default function Home() {
                 <div className="rounded-2xl overflow-hidden border border-navy-light/30 shadow-xl">
                   <Image
                     src="/images/vernon-ross.webp"
-                    alt="Vernon Ross — Host of Stories That Lead"
-                    width={400}
-                    height={540}
+                    alt="Vernon Ross \u2014 Host of Stories That Lead"
+                    width={800}
+                    height={1066}
                     className="w-full h-auto"
                   />
                 </div>
@@ -504,36 +808,36 @@ export default function Home() {
                 className="text-3xl lg:text-4xl font-bold"
                 style={{ fontFamily: "var(--font-playfair), serif" }}
               >
-                Meet <span className="text-gold">Vernon Ross</span>
+                Why I <span className="text-gold">Built This</span>
               </h2>
               <p className="text-gray-300 mt-6 leading-relaxed text-lg">
-                Enterprise Podcaster. Communications consultant to Fortune 500
-                teams. Creator of the Micro-Arc Framework and Voice Note
-                Blueprint — two proprietary methodologies that help
-                organizations tell stories that drive understanding, not drama.
+                Most business storytelling borrows from Hollywood &mdash;
+                hero&apos;s journey, conflict arcs, dramatic tension. It works
+                for movies. It fails for leaders.
               </p>
               <p className="text-gray-400 mt-4 leading-relaxed">
-                With over two decades in IT and enterprise communications,
-                Vernon bridges the gap between AI capability and communications
-                strategy. Stories That Lead is the show where these worlds
-                converge — revealing how the best teams are adapting, what
-                frameworks actually work, and why the future of corporate
-                communications sounds nothing like the past.
+                When a CEO announces a strategic pivot, the team doesn&apos;t
+                need drama. They need to understand <em>why</em>. When a leader
+                shares the framework behind a transformation, people don&apos;t
+                need a villain. They need the revelation.
               </p>
-              <div className="flex flex-wrap gap-3 mt-8">
-                {[
-                  "Enterprise Communications",
-                  "AI Strategy",
-                  "Podcast Production",
-                  "Fortune 500 Consulting",
-                ].map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-3 py-1.5 bg-navy-light/30 border border-navy-light/30 rounded-full text-gray-300 text-xs"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              <p className="text-gray-400 mt-4 leading-relaxed">
+                I spent 22 years in enterprise IT watching brilliant leaders
+                struggle to tell their stories because every framework handed to
+                them was built for screenwriters, not strategists. So I built
+                one that works differently &mdash; the Micro-Arc Framework
+                structures narrative around revelation instead of conflict,
+                adapted from Kish&#333;tenketsu, the four-act structure
+                that&apos;s driven Japanese storytelling for centuries.
+              </p>
+              <p className="text-gray-300 mt-4 leading-relaxed font-medium">
+                Stories That Lead is where these ideas come to life. Real
+                leaders. Real frameworks. Real moments of revelation.
+              </p>
+              <div className="mt-6">
+                <span className="text-gold font-bold">
+                  &mdash; Vernon Ross
+                </span>
               </div>
             </div>
           </div>
@@ -555,8 +859,8 @@ export default function Home() {
           </h2>
           <p className="text-gray-300 text-lg mt-4 max-w-lg mx-auto">
             Join the founding members list and be part of the launch.
-            You&apos;ll get early access, exclusive content, and the AI
-            Readiness Checklist — immediately.
+            You&apos;ll get early access, exclusive frameworks, and your
+            personalized leadership assessment &mdash; immediately.
           </p>
           <div className="mt-8">
             <EmailSignupForm
@@ -578,7 +882,7 @@ export default function Home() {
                 <span className="text-gold">LEAD</span>
               </span>
               <span className="text-gray-500 text-xs">
-                — Not Conflict. Revelation.
+                &mdash; Not Conflict. Revelation.
               </span>
             </div>
 
