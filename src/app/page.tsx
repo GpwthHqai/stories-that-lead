@@ -499,17 +499,16 @@ function LeadershipAssessment() {
 
         <div className="text-center">
           <p className="text-gray-300 mb-4">{profile.cta}</p>
-          {/* ── Update this URL with your Book Like a Boss link ── */}
           <a
-            href="https://vernonross.booklikeaboss.com"
+            href="https://bookme.name/vernon/lite/ai-strategy-framework"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-4 bg-gold hover:bg-gold-light text-navy-dark font-bold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-gold/20 text-lg"
           >
-            Book a Strategy Call
+            Book Your Strategy Session
           </a>
           <p className="text-gray-500 text-xs mt-3">
-            Free 20-minute call. No pitch. Just frameworks.
+            Free 45-minute session. No pitch. Just frameworks.
           </p>
         </div>
       </div>
