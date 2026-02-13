@@ -224,56 +224,95 @@ type ProfileResult = {
   cta: string;
 };
 
-function getProfile(answers: number[]): ProfileResult {
-  const challenge = answers[1] ?? 0;
-  const difference = answers[4] ?? 0;
+// Weighted scoring across all 5 answers → 6 distinct profiles
+const profileKey = [
+  "narrator",
+  "pioneer",
+  "builder",
+  "movement",
+  "architect",
+  "voice",
+] as const;
+type ProfileKey = (typeof profileKey)[number];
 
-  if (challenge === 1 || difference === 0) {
-    return {
-      type: "The Strategic Narrator",
-      emoji: "\uD83C\uDFAF",
-      description:
-        "You see the power of story in leadership but need a framework that matches how leaders actually think \u2014 not Hollywood screenwriting templates.",
-      recommendations: [
-        "The Micro-Arc Framework deep-dive episodes",
-        "Case studies on revelation-based leadership storytelling",
-        "Guest interviews with leaders who transformed organizations through narrative",
-      ],
-      cta: "Let\u2019s map your leadership story to the Micro-Arc Framework.",
-    };
-  }
+// Each question's answer maps points to profiles:
+// [narrator, pioneer, builder, movement, architect, voice]
+const scoringMatrix: number[][][] = [
+  // Q1: Role
+  [
+    [0, 0, 0, 2, 1, 3], // C-Suite
+    [1, 0, 1, 0, 3, 1], // VP / Director
+    [0, 2, 3, 0, 1, 0], // Manager / Team Lead
+    [2, 1, 0, 3, 0, 0], // Founder
+  ],
+  // Q2: Biggest challenge
+  [
+    [0, 4, 1, 0, 0, 0], // AI disruption
+    [4, 0, 0, 0, 1, 0], // Story during change
+    [0, 0, 0, 4, 0, 1], // Leadership buy-in
+    [0, 0, 3, 0, 0, 2], // Scaling impact
+  ],
+  // Q3: How team shares decisions
+  [
+    [0, 0, 2, 0, 2, 0], // Email blasts
+    [0, 0, 0, 2, 0, 2], // Town halls
+    [3, 1, 0, 0, 0, 0], // Podcasts / video / audio
+    [0, 0, 4, 0, 1, 0], // No structured approach
+  ],
+  // Q4: AI relationship
+  [
+    [2, 0, 0, 1, 0, 0], // Haven't started
+    [0, 2, 1, 0, 0, 0], // Experimenting
+    [0, 3, 0, 0, 1, 0], // Integrated some
+    [0, 0, 0, 0, 2, 2], // Fully embedded
+  ],
+  // Q5: Biggest difference
+  [
+    [4, 0, 0, 0, 0, 0], // Storytelling framework
+    [0, 4, 0, 0, 0, 0], // AI strategies
+    [0, 0, 2, 0, 0, 3], // Capture / scale thinking
+    [0, 0, 0, 4, 1, 0], // Community of leaders
+  ],
+];
 
-  if (challenge === 0 || difference === 1) {
-    return {
-      type: "The AI Pioneer",
-      emoji: "\u26A1",
-      description:
-        "You\u2019re leading your team through AI disruption and need practical strategies \u2014 not hype. You want to know what\u2019s actually working inside organizations like yours.",
-      recommendations: [
-        "AI implementation case studies from Fortune 500 teams",
-        "The Voice Note Blueprint for AI-assisted content creation",
-        "Framework episodes on building AI-ready teams",
-      ],
-      cta: "Let\u2019s build your team\u2019s AI implementation roadmap.",
-    };
-  }
-
-  if (challenge === 3 || difference === 2) {
-    return {
-      type: "The Framework Builder",
-      emoji: "\uD83C\uDFD7\uFE0F",
-      description:
-        "You need structured systems to scale your leadership thinking across teams. Ad hoc isn\u2019t cutting it anymore \u2014 you need repeatable frameworks.",
-      recommendations: [
-        "The Voice Note Blueprint for capturing leadership insights at scale",
-        "Enterprise workflow optimization episodes",
-        "Framework episodes on systemizing team communication",
-      ],
-      cta: "Let\u2019s design the framework your team needs.",
-    };
-  }
-
-  return {
+const profiles: Record<ProfileKey, ProfileResult> = {
+  narrator: {
+    type: "The Strategic Narrator",
+    emoji: "\uD83C\uDFAF",
+    description:
+      "You see the power of story in leadership but need a framework that matches how leaders actually think \u2014 not Hollywood screenwriting templates.",
+    recommendations: [
+      "The Micro-Arc Framework deep-dive episodes",
+      "Case studies on revelation-based leadership storytelling",
+      "Guest interviews with leaders who transformed organizations through narrative",
+    ],
+    cta: "Let\u2019s map your leadership story to the Micro-Arc Framework.",
+  },
+  pioneer: {
+    type: "The AI Pioneer",
+    emoji: "\u26A1",
+    description:
+      "You\u2019re leading your team through AI disruption and need practical strategies \u2014 not hype. You want to know what\u2019s actually working inside organizations like yours.",
+    recommendations: [
+      "AI implementation case studies from Fortune 500 teams",
+      "The Voice Note Blueprint for AI-assisted content creation",
+      "Framework episodes on building AI-ready teams",
+    ],
+    cta: "Let\u2019s build your team\u2019s AI implementation roadmap.",
+  },
+  builder: {
+    type: "The Framework Builder",
+    emoji: "\uD83C\uDFD7\uFE0F",
+    description:
+      "You need structured systems to scale your leadership thinking across teams. Ad hoc isn\u2019t cutting it anymore \u2014 you need repeatable frameworks.",
+    recommendations: [
+      "The Voice Note Blueprint for capturing leadership insights at scale",
+      "Enterprise workflow optimization episodes",
+      "Framework episodes on systemizing team communication",
+    ],
+    cta: "Let\u2019s design the framework your team needs.",
+  },
+  movement: {
     type: "The Movement Maker",
     emoji: "\uD83D\uDE80",
     description:
@@ -284,7 +323,65 @@ function getProfile(answers: number[]): ProfileResult {
       "Community and direct access through founding membership",
     ],
     cta: "Let\u2019s talk about scaling your leadership impact.",
+  },
+  architect: {
+    type: "The Transformation Architect",
+    emoji: "\uD83D\uDD27",
+    description:
+      "You\u2019re in the middle of leading real organizational change \u2014 not theorizing about it. You need a playbook for navigating disruption while keeping your team aligned and moving forward.",
+    recommendations: [
+      "Episodes on leading teams through large-scale transitions",
+      "The Micro-Arc Framework for communicating change without creating panic",
+      "Case studies on leaders who turned organizational disruption into strategic advantage",
+    ],
+    cta: "Let\u2019s build your transformation communication playbook.",
+  },
+  voice: {
+    type: "The Voice of Authority",
+    emoji: "\uD83C\uDF99\uFE0F",
+    description:
+      "You\u2019ve built the expertise and led at the highest levels. Now you need a system to capture that thinking, scale it beyond your immediate circle, and build a lasting body of work.",
+    recommendations: [
+      "The Voice Note Blueprint for turning leadership insights into scalable content",
+      "Episodes on building thought leadership platforms from enterprise experience",
+      "Framework episodes on institutional knowledge capture and distribution",
+    ],
+    cta: "Let\u2019s build the system that scales your leadership voice.",
+  },
+};
+
+function getProfile(answers: number[]): ProfileResult {
+  const scores: Record<ProfileKey, number> = {
+    narrator: 0,
+    pioneer: 0,
+    builder: 0,
+    movement: 0,
+    architect: 0,
+    voice: 0,
   };
+
+  // Tally scores from all 5 answers
+  for (let q = 0; q < 5; q++) {
+    const a = answers[q] ?? 0;
+    const weights = scoringMatrix[q]?.[a];
+    if (weights) {
+      profileKey.forEach((key, i) => {
+        scores[key] += weights[i];
+      });
+    }
+  }
+
+  // Find the highest-scoring profile
+  let topKey: ProfileKey = "narrator";
+  let topScore = -1;
+  for (const key of profileKey) {
+    if (scores[key] > topScore) {
+      topScore = scores[key];
+      topKey = key;
+    }
+  }
+
+  return profiles[topKey];
 }
 
 function LeadershipAssessment() {
