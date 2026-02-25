@@ -217,6 +217,7 @@ const assessmentQuestions = [
 ];
 
 type ProfileResult = {
+  key: string;
   type: string;
   emoji: string;
   description: string;
@@ -277,6 +278,7 @@ const scoringMatrix: number[][][] = [
 
 const profiles: Record<ProfileKey, ProfileResult> = {
   narrator: {
+    key: "narrator",
     type: "The Strategic Narrator",
     emoji: "\uD83C\uDFAF",
     description:
@@ -289,6 +291,7 @@ const profiles: Record<ProfileKey, ProfileResult> = {
     cta: "Let\u2019s map your leadership story to the Micro-Arc Framework.",
   },
   pioneer: {
+    key: "pioneer",
     type: "The AI Pioneer",
     emoji: "\u26A1",
     description:
@@ -301,6 +304,7 @@ const profiles: Record<ProfileKey, ProfileResult> = {
     cta: "Let\u2019s build your team\u2019s AI implementation roadmap.",
   },
   builder: {
+    key: "builder",
     type: "The Framework Builder",
     emoji: "\uD83C\uDFD7\uFE0F",
     description:
@@ -313,6 +317,7 @@ const profiles: Record<ProfileKey, ProfileResult> = {
     cta: "Let\u2019s design the framework your team needs.",
   },
   movement: {
+    key: "movement",
     type: "The Movement Maker",
     emoji: "\uD83D\uDE80",
     description:
@@ -325,6 +330,7 @@ const profiles: Record<ProfileKey, ProfileResult> = {
     cta: "Let\u2019s talk about scaling your leadership impact.",
   },
   architect: {
+    key: "architect",
     type: "The Transformation Architect",
     emoji: "\uD83D\uDD27",
     description:
@@ -337,6 +343,7 @@ const profiles: Record<ProfileKey, ProfileResult> = {
     cta: "Let\u2019s build your transformation communication playbook.",
   },
   voice: {
+    key: "voice",
     type: "The Voice of Authority",
     emoji: "\uD83C\uDF99\uFE0F",
     description:
@@ -416,6 +423,7 @@ function LeadershipAssessment() {
           email,
           first_name: firstName,
           source: "assessment",
+          profile: getProfile(answers).key,
         }),
       });
       if (response.ok) {
