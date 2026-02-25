@@ -416,6 +416,7 @@ function LeadershipAssessment() {
     if (!email) return;
     setStatus("loading");
     try {
+      const profileResult = getProfile(answers);
       const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -423,7 +424,7 @@ function LeadershipAssessment() {
           email,
           first_name: firstName,
           source: "assessment",
-          profile: getProfile(answers).key,
+          profile: profileResult.key,
         }),
       });
       if (response.ok) {
