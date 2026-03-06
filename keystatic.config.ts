@@ -1,9 +1,16 @@
 import { config, fields, collection } from "@keystatic/core";
 
+const isProd = process.env.NODE_ENV === "production";
+
 export default config({
-  storage: {
-    kind: "local",
-  },
+  storage: isProd
+    ? {
+        kind: "github",
+        repo: "GpwthHqai/stories-that-lead",
+      }
+    : {
+        kind: "local",
+      },
   collections: {
     episodes: collection({
       label: "Episodes",
