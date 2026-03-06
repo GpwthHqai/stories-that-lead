@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -15,11 +16,16 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.storiesthatlead.co"),
+  alternates: {
+    canonical: "/",
+  },
   title: "Stories That Lead — Not Conflict. Revelation. | Vernon Ross",
   description:
-    "Leaders reveal the frameworks behind the moments that changed everything. A podcast with strategic storytelling frameworks, AI implementation strategies, and real-world leadership insights. Hosted by Vernon Ross.",
+    "A leadership communication podcast where leaders reveal the frameworks behind the moments that changed everything. Strategic storytelling frameworks, AI implementation strategies, and executive communication frameworks for senior leaders. Hosted by Vernon Ross.",
   keywords: [
     "leadership podcast",
+    "leadership communication podcast",
     "enterprise podcast",
     "storytelling frameworks",
     "AI implementation",
@@ -32,6 +38,11 @@ export const metadata: Metadata = {
     "leadership frameworks",
     "AI for leaders",
     "communications leadership",
+    "executive communication frameworks",
+    "how leaders tell transformation stories",
+    "podcast for senior leaders",
+    "strategic storytelling for executives",
+    "AI leadership transformation",
   ],
   authors: [{ name: "Vernon Ross" }],
   creator: "Vernon Ross",
@@ -42,12 +53,12 @@ export const metadata: Metadata = {
     siteName: "Stories That Lead",
     title: "Stories That Lead — Not Conflict. Revelation.",
     description:
-      "Leaders reveal the frameworks behind the moments that changed everything. Strategic storytelling and AI implementation for leaders who think differently.",
+      "A leadership communication podcast where leaders reveal the frameworks behind the moments that changed everything. Strategic storytelling and AI implementation for leaders who think differently.",
     images: [
       {
-        url: "/images/og-image.jpg",
+        url: "/images/og-image-wide.jpg",
         width: 1200,
-        height: 1200,
+        height: 630,
         alt: "Stories That Lead Podcast with Vernon Ross",
       },
     ],
@@ -56,8 +67,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Stories That Lead — Not Conflict. Revelation.",
     description:
-      "Leaders reveal the frameworks behind the moments that changed everything. Hosted by Vernon Ross.",
-    images: ["/images/og-image.jpg"],
+      "A leadership communication podcast where leaders reveal the frameworks behind the moments that changed everything. Hosted by Vernon Ross.",
+    images: ["/images/og-image-wide.jpg"],
   },
   robots: {
     index: true,
@@ -88,6 +99,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "PodcastSeries",
               name: "Stories That Lead",
+              url: "https://www.storiesthatlead.co",
               description:
                 "Leaders reveal the frameworks behind the moments that changed everything. Strategic storytelling and AI implementation insights structured how leaders actually think.",
               author: {
@@ -104,7 +116,7 @@ export default function RootLayout({
                 "Communications",
               ],
               inLanguage: "en",
-              image: "/images/og-image.jpg",
+              image: "https://www.storiesthatlead.co/images/og-image.jpg",
             }),
           }}
         />
@@ -136,6 +148,7 @@ export default function RootLayout({
         className={`${inter.variable} ${playfair.variable} antialiased`}
       >
         {children}
+        <Analytics />
       </body>
     </html>
   );
