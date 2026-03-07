@@ -1,28 +1,32 @@
-import { makeRouteHandler } from "@keystatic/next/route-handler";
-import { NextResponse } from "next/server";
-import config from "../../../../../keystatic.config";
+import { NextRequest } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-// In production GitHub mode, Keystatic needs env vars that won't exist during build.
-const isProd = process.env.NODE_ENV === "production";
-const hasGitHubCreds =
-  process.env.KEYSTATIC_GITHUB_CLIENT_ID &&
-  process.env.KEYSTATIC_GITHUB_CLIENT_SECRET &&
-  process.env.KEYSTATIC_SECRET;
-
+// Lazily initialize the handler at request time, not at build/module-eval time.
+// This avoids the build error when GitHub env vars aren't set yet,
+// while still letting Keystatic's setup flow work at runtime.
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-let handler: { GET: any; POST: any };
+let cachedHandler: { GET: any; POST: any } | null = null;
 
-if (!isProd || hasGitHubCreds) {
-  handler = makeRouteHandler({ config });
-} else {
-  const fallback = () =>
-    NextResponse.json(
-      { error: "Keystatic not configured. Set GitHub env vars." },
-      { status: 503 }
+async function getHandler() {
+  if (!cachedHandler) {
+    const { makeRouteHandler } = await import(
+      "@keystatic/next/route-handler"
     );
-  handler = { GET: fallback, POST: fallback };
+    const { default: config } = await import(
+      "../../../../../keystatic.config"
+    );
+    cachedHandler = makeRouteHandler({ config });
+  }
+  return cachedHandler;
 }
 
-export const { GET, POST } = handler;
+export async function GET(req: NextRequest) {
+  const handler = await getHandler();
+  return handler.GET(req);
+}
+
+export async function POST(req: NextRequest) {
+  const handler = await getHandler();
+  return handler.POST(req);
+}
