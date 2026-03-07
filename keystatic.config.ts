@@ -1,14 +1,10 @@
 import { config, fields, collection } from "@keystatic/core";
 
-// Use GitHub mode only when the env vars are actually present.
-// This avoids the chicken-and-egg: Keystatic needs env vars to run in
-// GitHub mode, but the setup wizard that creates those vars needs the
-// API route working. Falls back to local mode during setup.
-const useGitHub = !!(
-  process.env.KEYSTATIC_GITHUB_CLIENT_ID &&
-  process.env.KEYSTATIC_GITHUB_CLIENT_SECRET &&
-  process.env.KEYSTATIC_SECRET
-);
+// Use the NEXT_PUBLIC_ slug var to determine mode — it's the only
+// Keystatic env var available on both server AND client (baked in at
+// build time). Without this, the client-side config falls into local
+// mode and never shows the GitHub login screen.
+const useGitHub = !!process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG;
 
 export default config({
   storage: useGitHub
