@@ -1,9 +1,17 @@
 import { config, fields, collection } from "@keystatic/core";
 
-const isProd = process.env.NODE_ENV === "production";
+// Use GitHub mode only when the env vars are actually present.
+// This avoids the chicken-and-egg: Keystatic needs env vars to run in
+// GitHub mode, but the setup wizard that creates those vars needs the
+// API route working. Falls back to local mode during setup.
+const useGitHub = !!(
+  process.env.KEYSTATIC_GITHUB_CLIENT_ID &&
+  process.env.KEYSTATIC_GITHUB_CLIENT_SECRET &&
+  process.env.KEYSTATIC_SECRET
+);
 
 export default config({
-  storage: isProd
+  storage: useGitHub
     ? {
         kind: "github",
         repo: "GpwthHqai/stories-that-lead",
