@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node -e \"try{require('lightningcss')}catch(e){console.log('\\x1b[33m⚡ Reinstalling native modules for your platform...\\x1b[0m');require('child_process').execSync('npm install',{stdio:'inherit'})}\"",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
