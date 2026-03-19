@@ -134,7 +134,13 @@ export default async function EpisodePage({
                 href="/episodes"
                 className="text-gray-400 hover:text-gold text-sm transition-colors"
               >
-                All Episodes
+                Episodes
+              </Link>
+              <Link
+                href="/articles"
+                className="text-gray-400 hover:text-gold text-sm transition-colors"
+              >
+                Articles
               </Link>
               <Link
                 href="/#signup"

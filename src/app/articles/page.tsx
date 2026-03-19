@@ -1,24 +1,24 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { getAllEpisodes } from "@/lib/episodes";
+import { getAllArticles } from "@/lib/articles";
 
 export const metadata: Metadata = {
-  title: "Episodes | Stories That Lead — Leadership Communication Podcast",
+  title: "Articles | Stories That Lead — Leadership Communication Insights",
   description:
-    "Browse all episodes of Stories That Lead. Leadership storytelling frameworks, AI implementation strategies, and executive communication insights with Vernon Ross.",
+    "Guides, frameworks, and strategies for AI-ready communications, podcast discoverability, and leadership storytelling. By Vernon Ross.",
   alternates: {
-    canonical: "/episodes",
+    canonical: "/articles",
   },
   openGraph: {
-    title: "All Episodes | Stories That Lead",
+    title: "Articles | Stories That Lead",
     description:
-      "Browse all episodes of Stories That Lead. Leadership storytelling frameworks, AI implementation strategies, and executive communication insights.",
+      "Guides, frameworks, and strategies for AI-ready communications, podcast discoverability, and leadership storytelling.",
     type: "website",
   },
 };
 
-export default function EpisodesPage() {
-  const episodes = getAllEpisodes();
+export default function ArticlesPage() {
+  const articles = getAllArticles();
 
   return (
     <main className="min-h-screen bg-navy-dark">
@@ -35,13 +35,13 @@ export default function EpisodesPage() {
           <div className="flex items-center gap-4">
             <Link
               href="/episodes"
-              className="text-gold text-sm font-semibold transition-colors"
+              className="text-gray-400 hover:text-gold text-sm transition-colors"
             >
               Episodes
             </Link>
             <Link
               href="/articles"
-              className="text-gray-400 hover:text-gold text-sm transition-colors"
+              className="text-gold text-sm font-semibold transition-colors"
             >
               Articles
             </Link>
@@ -63,27 +63,27 @@ export default function EpisodesPage() {
             className="text-4xl lg:text-5xl font-bold text-white"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            All <span className="text-gold">Episodes</span>
+            <span className="text-gold">Articles</span> &amp; Guides
           </h1>
           <p className="text-gray-300 text-lg mt-4 max-w-2xl mx-auto">
-            Leadership frameworks, strategic storytelling, and AI implementation
-            insights &mdash; structured how leaders actually think.
+            Deep dives into AI-ready communications, content strategy, and
+            leadership storytelling frameworks.
           </p>
         </div>
       </section>
 
-      {/* Episodes List */}
+      {/* Articles List */}
       <section className="pb-24">
         <div className="max-w-4xl mx-auto px-6">
-          {episodes.length === 0 ? (
+          {articles.length === 0 ? (
             <div className="text-center py-16">
-              <div className="text-5xl mb-6">🎙️</div>
+              <div className="text-5xl mb-6">📝</div>
               <h2 className="text-2xl font-bold text-white mb-4">
-                Episodes Coming Soon
+                Articles Coming Soon
               </h2>
               <p className="text-gray-400 max-w-md mx-auto mb-8">
-                Stories That Lead is launching soon. Join the founding members
-                list to get early access to every episode.
+                In-depth guides and frameworks are on the way. Join the founding
+                members list to get early access.
               </p>
               <Link
                 href="/#signup"
@@ -94,26 +94,26 @@ export default function EpisodesPage() {
             </div>
           ) : (
             <div className="space-y-6">
-              {episodes.map((episode) => (
+              {articles.map((article) => (
                 <Link
-                  key={episode.slug}
-                  href={`/episodes/${episode.slug}`}
+                  key={article.slug}
+                  href={`/articles/${article.slug}`}
                   className="block group"
                 >
                   <article className="bg-navy/30 border border-navy-light/20 rounded-xl p-6 lg:p-8 hover:border-gold/30 transition-all duration-200">
                     <div className="flex flex-col lg:flex-row lg:items-start gap-4">
-                      <div className="flex-shrink-0">
-                        <span className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gold/10 text-gold font-bold text-lg">
-                          {episode.episodeNumber}
-                        </span>
-                      </div>
                       <div className="flex-1 min-w-0">
+                        {article.category && (
+                          <span className="inline-block px-3 py-1 bg-gold/10 border border-gold/20 rounded-full text-xs text-gold mb-3">
+                            {article.category}
+                          </span>
+                        )}
                         <h2 className="text-xl lg:text-2xl font-bold text-white group-hover:text-gold transition-colors">
-                          {episode.title}
+                          {article.title}
                         </h2>
                         <div className="flex flex-wrap items-center gap-3 mt-2 text-sm text-gray-400">
-                          <time dateTime={episode.publishDate}>
-                            {new Date(episode.publishDate).toLocaleDateString(
+                          <time dateTime={article.publishDate}>
+                            {new Date(article.publishDate).toLocaleDateString(
                               "en-US",
                               {
                                 year: "numeric",
@@ -123,28 +123,22 @@ export default function EpisodesPage() {
                             )}
                           </time>
                           <span className="text-navy-light">•</span>
-                          <span>{episode.duration}</span>
-                          {episode.guestName && (
-                            <>
-                              <span className="text-navy-light">•</span>
-                              <span>with {episode.guestName}</span>
-                            </>
-                          )}
+                          <span>{article.author}</span>
                         </div>
                         <p className="text-gray-400 mt-3 leading-relaxed line-clamp-2">
-                          {episode.description}
+                          {article.description}
                         </p>
-                        {episode.frameworks && (
+                        {article.tags && (
                           <div className="flex flex-wrap gap-2 mt-3">
-                            {episode.frameworks
+                            {article.tags
                               .split(",")
                               .slice(0, 3)
-                              .map((f: string) => (
+                              .map((t: string) => (
                                 <span
-                                  key={f.trim()}
-                                  className="px-2 py-0.5 bg-gold/10 border border-gold/20 rounded-full text-xs text-gold"
+                                  key={t.trim()}
+                                  className="px-2 py-0.5 bg-navy-light/30 border border-navy-light/20 rounded-full text-xs text-gray-400"
                                 >
-                                  {f.trim()}
+                                  {t.trim()}
                                 </span>
                               ))}
                           </div>

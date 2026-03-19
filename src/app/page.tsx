@@ -24,6 +24,12 @@ export default function Home() {
               Episodes
             </a>
             <a
+              href="/articles"
+              className="text-gray-400 hover:text-gold text-sm transition-colors"
+            >
+              Articles
+            </a>
+            <a
               href="#signup"
               className="px-5 py-2 bg-gold/10 border border-gold/30 text-gold text-sm font-semibold rounded-lg hover:bg-gold/20 transition-colors"
             >

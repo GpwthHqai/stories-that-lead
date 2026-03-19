@@ -97,5 +97,64 @@ export default config({
         }),
       },
     }),
+    articles: collection({
+      label: "Articles",
+      slugField: "title",
+      path: "content/articles/*",
+      format: { data: "json" },
+      schema: {
+        title: fields.slug({
+          name: { label: "Article Title", validation: { isRequired: true } },
+        }),
+        publishDate: fields.date({
+          label: "Publish Date",
+          validation: { isRequired: true },
+        }),
+        author: fields.text({
+          label: "Author",
+          defaultValue: "Vernon Ross",
+          validation: { isRequired: true },
+        }),
+        description: fields.text({
+          label: "Short Description (for cards & meta)",
+          multiline: true,
+          validation: { isRequired: true },
+        }),
+        category: fields.text({
+          label: "Category",
+          description: "e.g. 'AEO-GEO Strategy', 'Leadership', 'AI Implementation'",
+        }),
+        tags: fields.text({
+          label: "Tags",
+          description: "Comma-separated tags",
+        }),
+        keywords: fields.text({
+          label: "SEO Keywords",
+          description: "Comma-separated keywords for search and AI discoverability",
+        }),
+        featuredImage: fields.image({
+          label: "Featured Image",
+          directory: "public/images/articles",
+          publicPath: "/images/articles",
+          description: "Optional featured image. Falls back to STL default cover.",
+        }),
+        seoTitle: fields.text({
+          label: "SEO Title",
+          description: "Optional — only if different from the article title",
+        }),
+        canonicalUrl: fields.url({
+          label: "Canonical URL",
+          description: "Only needed if syndicating to another platform",
+        }),
+        body: fields.document({
+          label: "Article Body",
+          description: "Full article content",
+          formatting: true,
+          dividers: true,
+          links: true,
+          tables: true,
+        }),
+      },
+    }),
   },
 });

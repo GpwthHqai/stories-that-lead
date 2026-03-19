@@ -138,6 +138,48 @@ function renderNode(node: DocumentNode, key: string): React.ReactNode {
           {children}
         </blockquote>
       );
+    case "table":
+      return (
+        <div key={key} className="overflow-x-auto mb-6">
+          <table className="w-full border-collapse text-sm">
+            {children}
+          </table>
+        </div>
+      );
+    case "table-head":
+      return (
+        <thead key={key} className="bg-navy-light/30">
+          {children}
+        </thead>
+      );
+    case "table-body":
+      return <tbody key={key}>{children}</tbody>;
+    case "table-row":
+      return (
+        <tr key={key} className="border-b border-navy-light/20">
+          {children}
+        </tr>
+      );
+    case "table-cell": {
+      const isHeader = node.children?.[0] && "text" in node.children[0];
+      const parentIsHead =
+        key.split("-").length > 2; // heuristic — rely on thead/tbody for styling
+      return parentIsHead ? (
+        <td
+          key={key}
+          className="px-4 py-3 text-gray-300 text-left"
+        >
+          {children}
+        </td>
+      ) : (
+        <td
+          key={key}
+          className="px-4 py-3 text-gray-300 text-left"
+        >
+          {children}
+        </td>
+      );
+    }
     default:
       return <div key={key}>{children}</div>;
   }
