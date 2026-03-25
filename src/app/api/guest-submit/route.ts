@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
+import crypto from "crypto";
 import { resend, FROM_ADDRESS } from "@/lib/resend";
+import { isValidEmail } from "@/lib/validation";
+import { checkRateLimit, getClientIP } from "@/lib/rate-limit";
 import {
   guestPrepConfirmationEmail,
   guestNotificationEmail,
@@ -17,8 +20,48 @@ import {
 const UPLOAD_DIR = process.env.GUEST_UPLOAD_DIR || "/tmp/stl-guest-uploads";
 const VERNON_EMAIL = process.env.VERNON_EMAIL || "vernon@vernonross.com";
 
+// ── File Upload Security ─────────────────────────────────────────────────────
+const ALLOWED_MIME_TYPES = new Set([
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/gif",
+  "image/svg+xml",
+  "application/pdf",
+  "application/zip",
+]);
+
+const MIME_TO_EXT: Record<string, string> = {
+  "image/jpeg": ".jpg",
+  "image/png": ".png",
+  "image/webp": ".webp",
+  "image/gif": ".gif",
+  "image/svg+xml": ".svg",
+  "application/pdf": ".pdf",
+  "application/zip": ".zip",
+};
+
+const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB per file
+const MAX_TOTAL_SIZE = 40 * 1024 * 1024; // 40MB total across all files
+
 export async function POST(request: NextRequest) {
   try {
+    // Rate limit: 3 requests per minute per IP
+    const ip = getClientIP(request);
+    const { allowed, resetAt } = checkRateLimit(`guest-submit:${ip}`, {
+      limit: 3,
+      windowMs: 60_000,
+    });
+    if (!allowed) {
+      return NextResponse.json(
+        { error: "Too many submissions. Please try again later." },
+        {
+          status: 429,
+          headers: { "Retry-After": String(Math.ceil((resetAt - Date.now()) / 1000)) },
+        }
+      );
+    }
+
     const formData = await request.formData();
 
     // Extract text fields
@@ -48,6 +91,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate email format before sending any emails
+    if (!isValidEmail(textFields.email)) {
+      return NextResponse.json(
+        { error: "Please provide a valid email address" },
+        { status: 400 }
+      );
+    }
+
     // Create upload directory for this guest
     const sanitizedName = textFields.fullName
       .toLowerCase()
@@ -57,9 +108,10 @@ export async function POST(request: NextRequest) {
     const guestDir = path.join(UPLOAD_DIR, `${timestamp}-${sanitizedName}`);
     await mkdir(guestDir, { recursive: true });
 
-    // Save uploaded files
+    // Save uploaded files with security validation
     const fileKeys = ["headshot", "logo", "promoImage", "mediaKit"];
     const fileFields: Record<string, string[]> = {};
+    let totalFileSize = 0;
 
     for (const key of fileKeys) {
       const files = formData.getAll(key);
@@ -67,10 +119,38 @@ export async function POST(request: NextRequest) {
 
       for (const file of files) {
         if (file instanceof File && file.size > 0) {
+          // Validate file size
+          if (file.size > MAX_FILE_SIZE) {
+            return NextResponse.json(
+              { error: `File "${file.name}" exceeds 10MB limit` },
+              { status: 400 }
+            );
+          }
+          totalFileSize += file.size;
+          if (totalFileSize > MAX_TOTAL_SIZE) {
+            return NextResponse.json(
+              { error: "Total upload size exceeds 40MB limit" },
+              { status: 400 }
+            );
+          }
+
+          // Validate MIME type
+          if (!ALLOWED_MIME_TYPES.has(file.type)) {
+            return NextResponse.json(
+              {
+                error: `File type "${file.type}" not allowed. Accepted: images (JPEG, PNG, WebP, GIF, SVG), PDF, ZIP`,
+              },
+              { status: 400 }
+            );
+          }
+
           const bytes = await file.arrayBuffer();
           const buffer = Buffer.from(bytes);
-          const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
-          const filePath = path.join(guestDir, `${key}-${safeName}`);
+
+          // Use crypto-random filename with correct extension from MIME type
+          const ext = MIME_TO_EXT[file.type] || path.extname(file.name).toLowerCase();
+          const randomName = crypto.randomBytes(16).toString("hex");
+          const filePath = path.join(guestDir, `${key}-${randomName}${ext}`);
           await writeFile(filePath, buffer);
           fileFields[key].push(filePath);
         }

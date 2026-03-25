@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { resend, FROM_ADDRESS } from "@/lib/resend";
 import { bookingConfirmationEmail } from "@/lib/emails";
+import { checkRateLimit, getClientIP } from "@/lib/rate-limit";
 
 /**
  * Book Like a Boss Webhook Handler
@@ -21,18 +22,32 @@ const VERNON_EMAIL = process.env.VERNON_EMAIL || "vernon@vernonross.com";
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-
-    // Optional: verify webhook secret if configured
-    const secret = process.env.BLAB_WEBHOOK_SECRET;
-    if (secret) {
-      const headerSecret =
-        request.headers.get("x-webhook-secret") ||
-        request.headers.get("authorization");
-      if (headerSecret !== secret && headerSecret !== `Bearer ${secret}`) {
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-      }
+    // Rate limit: 30 requests per minute per IP
+    const ip = getClientIP(request);
+    const { allowed } = checkRateLimit(`blab-webhook:${ip}`, {
+      limit: 30,
+      windowMs: 60_000,
+    });
+    if (!allowed) {
+      return NextResponse.json({ error: "Rate limited" }, { status: 429 });
     }
+
+    // Verify webhook secret — REQUIRED
+    const secret = process.env.BLAB_WEBHOOK_SECRET;
+    if (!secret) {
+      console.error("[BLAB Webhook] BLAB_WEBHOOK_SECRET is not set — rejecting all requests");
+      return NextResponse.json({ error: "Webhook not configured" }, { status: 500 });
+    }
+
+    const headerSecret =
+      request.headers.get("x-webhook-secret") ||
+      request.headers.get("authorization");
+    if (headerSecret !== secret && headerSecret !== `Bearer ${secret}`) {
+      console.warn("[BLAB Webhook] Unauthorized request rejected");
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const body = await request.json();
 
     const eventType = body.event || body.type || "unknown";
 

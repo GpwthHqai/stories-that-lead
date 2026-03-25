@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { isValidEmail, sanitizeString } from "@/lib/validation";
+import { checkRateLimit, getClientIP } from "@/lib/rate-limit";
 
 // Profile key → GHL tag name mapping
 const PROFILE_TAG_MAP: Record<string, string> = {
@@ -10,13 +12,51 @@ const PROFILE_TAG_MAP: Record<string, string> = {
   voice: "profile: voice of authority",
 };
 
+const VALID_SOURCES = new Set(["hero", "lead-magnet", "bottom", "assessment"]);
+
 export async function POST(request: NextRequest) {
   try {
-    const { email, first_name, source, profile } = await request.json();
+    // Rate limit: 5 requests per minute per IP
+    const ip = getClientIP(request);
+    const { allowed, resetAt } = checkRateLimit(`subscribe:${ip}`, {
+      limit: 5,
+      windowMs: 60_000,
+    });
+    if (!allowed) {
+      return NextResponse.json(
+        { error: "Too many requests. Please try again later." },
+        {
+          status: 429,
+          headers: { "Retry-After": String(Math.ceil((resetAt - Date.now()) / 1000)) },
+        }
+      );
+    }
 
-    if (!email || !email.includes("@")) {
+    const body = await request.json();
+
+    const email = sanitizeString(body.email, 254);
+    const first_name = sanitizeString(body.first_name, 100);
+    const source = sanitizeString(body.source, 50);
+    const profile = sanitizeString(body.profile, 50);
+
+    if (!isValidEmail(email)) {
       return NextResponse.json(
         { error: "Valid email is required" },
+        { status: 400 }
+      );
+    }
+
+    // Validate source and profile against known values
+    if (source && !VALID_SOURCES.has(source)) {
+      return NextResponse.json(
+        { error: "Invalid source" },
+        { status: 400 }
+      );
+    }
+
+    if (profile && !PROFILE_TAG_MAP[profile]) {
+      return NextResponse.json(
+        { error: "Invalid profile" },
         { status: 400 }
       );
     }
