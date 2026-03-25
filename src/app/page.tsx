@@ -30,12 +30,6 @@ export default function Home() {
               Articles
             </a>
             <a
-              href="/guest"
-              className="text-gray-400 hover:text-gold text-sm transition-colors"
-            >
-              Be a Guest
-            </a>
-            <a
               href="#signup"
               className="px-5 py-2 bg-gold/10 border border-gold/30 text-gold text-sm font-semibold rounded-lg hover:bg-gold/20 transition-colors"
             >
