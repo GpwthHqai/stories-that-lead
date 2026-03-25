@@ -165,7 +165,7 @@ export default function GuestPage() {
               {
                 title: "I handle everything after",
                 description:
-                  "Editing, artwork, show notes, social clips, and distribution. You'll review the final cut before it goes live.",
+                  "Editing, artwork, show notes, social clips, and distribution. You'll receive links to share with your network.",
               },
             ].map((item, i) => (
               <div key={item.title} className="flex gap-4">

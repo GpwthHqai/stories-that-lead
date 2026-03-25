@@ -193,7 +193,7 @@ export function guestPrepConfirmationEmail({
             2. We record for 45-60 minutes via Riverside.fm. Conversational, not scripted.
             I guide the structure so you can focus on sharing your insight.<br/><br/>
             3. I handle editing, artwork, show notes, social clips, and distribution.
-            You'll review the final cut before it goes live.
+            You'll receive links to share with your network.
           </p>
 
           <p style="${STYLES.body}">
