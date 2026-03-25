@@ -2,6 +2,34 @@
 
 import { useState, useEffect, useCallback } from "react";
 
+// ─── Launch-Aware Badge ──────────────────────────────────────────────────────
+export function LaunchBadge({
+  targetDate,
+  preText = "Coming March 2026",
+  liveText = "Now Live",
+}: {
+  targetDate: string;
+  preText?: string;
+  liveText?: string;
+}) {
+  const [mounted, setMounted] = useState(false);
+  const [expired, setExpired] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    setExpired(new Date(targetDate).getTime() - new Date().getTime() <= 0);
+  }, [targetDate]);
+
+  const text = !mounted ? preText : expired ? liveText : preText;
+
+  return (
+    <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full text-gold text-sm mb-6">
+      <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+      {text}
+    </div>
+  );
+}
+
 // ─── Countdown Timer Component ───────────────────────────────────────────────
 export function CountdownTimer({ targetDate }: { targetDate: string }) {
   const calculateTimeLeft = useCallback(() => {
@@ -15,14 +43,23 @@ export function CountdownTimer({ targetDate }: { targetDate: string }) {
     };
   }, [targetDate]);
 
+  const isExpired = useCallback(() => {
+    return new Date(targetDate).getTime() - new Date().getTime() <= 0;
+  }, [targetDate]);
+
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
   const [mounted, setMounted] = useState(false);
+  const [expired, setExpired] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000);
+    setExpired(isExpired());
+    const timer = setInterval(() => {
+      setTimeLeft(calculateTimeLeft());
+      if (isExpired()) setExpired(true);
+    }, 1000);
     return () => clearInterval(timer);
-  }, [calculateTimeLeft]);
+  }, [calculateTimeLeft, isExpired]);
 
   if (!mounted) {
     return (
@@ -41,6 +78,38 @@ export function CountdownTimer({ targetDate }: { targetDate: string }) {
     );
   }
 
+  // ── Post-Launch State ──
+  if (expired) {
+    return (
+      <div className="text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full text-gold text-sm mb-6">
+          <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+          Now Live
+        </div>
+        <h3
+          className="text-2xl lg:text-3xl font-bold mb-4"
+          style={{ fontFamily: "var(--font-playfair), serif" }}
+        >
+          Stories That Lead is <span className="text-gold">Live</span>
+        </h3>
+        <p className="text-gray-300 text-lg max-w-md mx-auto mb-8 leading-relaxed">
+          Leaders are already sharing the frameworks behind the moments that
+          changed everything. Listen now.
+        </p>
+        <a
+          href="/episodes"
+          className="inline-flex items-center gap-2 px-8 py-4 bg-[#ce3c06] hover:bg-[#a52f05] text-white font-bold rounded-lg transition-colors text-lg"
+        >
+          Browse Episodes
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </a>
+      </div>
+    );
+  }
+
+  // ── Pre-Launch Countdown ──
   const units = [
     { label: "Days", value: timeLeft.days },
     { label: "Hours", value: timeLeft.hours },
@@ -49,19 +118,28 @@ export function CountdownTimer({ targetDate }: { targetDate: string }) {
   ];
 
   return (
-    <div className="flex gap-4 justify-center">
-      {units.map(({ label, value }) => (
-        <div key={label} className="text-center">
-          <div className="bg-navy-light/50 border border-navy-light rounded-lg w-20 h-20 flex items-center justify-center">
-            <span className="text-3xl font-bold text-gold">
-              {String(value).padStart(2, "0")}
+    <div>
+      <p className="text-gray-400 text-sm uppercase tracking-wider mb-6">
+        Launching In
+      </p>
+      <div className="flex gap-4 justify-center">
+        {units.map(({ label, value }) => (
+          <div key={label} className="text-center">
+            <div className="bg-navy-light/50 border border-navy-light rounded-lg w-20 h-20 flex items-center justify-center">
+              <span className="text-3xl font-bold text-gold">
+                {String(value).padStart(2, "0")}
+              </span>
+            </div>
+            <span className="text-xs text-gray-400 mt-2 block uppercase tracking-wider">
+              {label}
             </span>
           </div>
-          <span className="text-xs text-gray-400 mt-2 block uppercase tracking-wider">
-            {label}
-          </span>
-        </div>
-      ))}
+        ))}
+      </div>
+      <p className="text-gray-400 text-sm mt-8 max-w-md mx-auto">
+        Join the founding members list for early episode access, exclusive
+        frameworks, and behind-the-scenes updates.
+      </p>
     </div>
   );
 }

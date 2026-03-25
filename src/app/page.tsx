@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { CountdownTimer, EmailSignupForm, LeadershipAssessment } from "./components/ClientComponents";
+import { CountdownTimer, EmailSignupForm, LeadershipAssessment, LaunchBadge } from "./components/ClientComponents";
 import LatestEpisodes from "./components/LatestEpisodes";
 
 // ─── Main Page ───────────────────────────────────────────────────────────────
@@ -47,10 +47,7 @@ export default function Home() {
         <div className="relative z-10 max-w-6xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
             <div className="animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full text-gold text-sm mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-                Coming March 2026
-              </div>
+              <LaunchBadge targetDate="2026-03-31T09:00:00-04:00" />
             </div>
 
             <h1 className="sr-only">Stories That Lead — A Leadership Communication Podcast with Vernon Ross</h1>
@@ -124,17 +121,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Countdown Section ── */}
+      {/* ── Countdown / Now Live Section ── */}
       <section className="py-16 bg-navy border-y border-navy-light/20">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-gray-400 text-sm uppercase tracking-wider mb-6">
-            Launching In
-          </p>
           <CountdownTimer targetDate="2026-03-31T09:00:00-04:00" />
-          <p className="text-gray-400 text-sm mt-8 max-w-md mx-auto">
-            Join the founding members list for early episode access, exclusive
-            frameworks, and behind-the-scenes updates.
-          </p>
         </div>
       </section>
 
