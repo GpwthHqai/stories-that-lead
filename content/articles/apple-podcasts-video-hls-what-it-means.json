@@ -1,0 +1,636 @@
+{
+  "title": "Apple Podcasts Video (HLS): What It Means for Creators, Advertisers, and Enterprise Podcasters",
+  "publishDate": "2026-03-27",
+  "author": "Vernon Ross",
+  "description": "Apple Podcasts now supports HLS video with creator-controlled dynamic ads. What it means for podcast strategy and monetization.",
+  "category": "Podcasting",
+  "tags": "video podcasts, Apple Podcasts, HLS, podcast strategy, podcast advertising, enterprise podcasting, creator monetization",
+  "keywords": "Apple Podcasts video HLS, video podcast advertising, creator-controlled dynamic ads, podcast monetization, enterprise podcast strategy",
+  "featuredImage": null,
+  "seoTitle": "Apple Podcasts Video (HLS): What It Means for Creators and Enterprise Podcasters",
+  "canonicalUrl": null,
+  "body": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Most of the conversation about Apple adding video to Podcasts has focused on the technology. HLS streaming, adaptive bitrates, 10-second segments. That matters, but it's not the story. The story is about control: who owns the ad relationship, who sets the terms, and who gets left out."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "On March 24, 2026, Apple Podcasts went live with full video support through HTTP Live Streaming. The same adaptive streaming technology behind Netflix, Disney+, and, yes, YouTube. Listeners on iPhone, iPad, Apple Vision Pro, and the web can now watch video podcasts with automatic quality adjustment, seamless audio fallback, and offline downloads. One show page, one subscriber base, video and audio side by side."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "That's the surface. Underneath it, Apple made a structural decision that separates this from anything YouTube or Spotify currently offers. Creators and their hosting providers control dynamic video ad insertion. Not Apple. Not an Apple-run ad marketplace. The hosting provider serves the ads, the creator picks the partners, and Apple charges ad networks a CPM-based impression fee for delivery. Baked-in ads cost nothing."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Bryan Barletta of Sounds Profitable called it "
+        },
+        {
+          "text": "\"the first video solution on a major platform in the creator space that puts full dynamic video ad serving control into the hands of the hosting platforms and creators.\""
+        },
+        {
+          "text": " Coming from someone who tracks podcast ad infrastructure for a living, that's not casual praise."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "What does Apple Podcasts video (HLS) actually change for podcast creators?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The immediate change is distribution simplification. If you've been producing video for YouTube and simultaneously managing an audio-only feed for Apple Podcasts, you no longer need that split. Your hosting provider uploads video through Apple's API, and listeners choose their format. Same show page, same analytics, same subscribers. The fragmented audience problem that video podcasters have lived with for years just got smaller."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The deeper change is economic. "
+        },
+        {
+          "text": "Podcast ad spending grew 32% year-over-year in Q4 2025",
+          "bold": true
+        },
+        {
+          "text": ", according to industry tracking, with 1,482 new advertisers entering the category. Video commands premium rates. "
+        },
+        {
+          "text": "Audioboom reported CPMs above $40 for video content in mid-2025.",
+          "bold": true
+        },
+        {
+          "text": " The money is already flowing toward video. Apple just gave creators a new channel to capture it on their own terms."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Fourteen hosting providers launched with HLS support: Acast, ART19, Audiomeans, Ausha, Captivate, Firstory, Omny Studio (Triton Digital), PodBean, Podigee, Podspace, Riverside, RSS.com, Simplecast (SiriusXM), and Transistor. If your show runs through one of them, activation is a conversation with your account rep, not a platform migration."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "Why should enterprise communications teams pay attention to Apple Podcasts video?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "This is where the conversation gets specific, and where most of the analysis misses the mark."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Enterprise communications teams running branded podcasts operate differently from independent creators. You're not optimizing for YouTube's recommendation algorithm or chasing Spotify playlist features. You're building owned media assets for defined audiences: employees, investors, industry peers, customers. The value is in the relationship and the trust it builds over time, not viral reach."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Apple's video model fits that use case better than YouTube or Spotify for one reason: you bring your own ad infrastructure. For enterprise teams, this means branded content, sponsor integrations, and internal messaging delivered through dynamic insertion without a platform intermediary deciding what runs, when, or for how much. Your hosting provider handles the technical delivery. Your team controls the creative and the partnerships."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Consider what that looks like in practice. A Fortune 500 running a leadership podcast can now serve different video pre-rolls to different audience segments through their hosting provider's targeting capabilities, with no platform taking a revenue cut and no third-party marketplace setting CPM floors. A B2B company can rotate sponsor messages across episodes dynamically instead of baking them into content permanently. A corporate communications team producing town halls or executive thought leadership can distribute video through Apple Podcasts alongside traditional audio, expanding reach to visual-first consumers within their audience."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The infrastructure cost is not trivial. "
+        },
+        {
+          "text": "HLS generates approximately 450 server requests per listener",
+          "bold": true
+        },
+        {
+          "text": " compared to one for RSS audio. But enterprise budgets already account for production, hosting, and distribution. The incremental cost of HLS activation through an existing hosting provider is modest compared to the distribution expansion it unlocks."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "If your organization already produces video content, even basic talking-head recordings, this is a low-friction expansion. If you're audio-only, the question isn't \"should we add video?\" It's \"does our audience consume video, and can we sustain the production quality?\" Apple's platform availability doesn't change the production economics. It changes the distribution economics."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "Does YouTube still have an advantage over Apple Podcasts for video podcasts?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Here's where the contrarian case deserves more attention than it's getting."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Yes. YouTube still has a significant, possibly decisive advantage for most creators, and Apple's HLS launch doesn't change that."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Seventy percent of Gen Z discovers podcasts through YouTube",
+          "bold": true
+        },
+        {
+          "text": ", according to recent survey data. YouTube's recommendation engine is the single most powerful discovery mechanism in podcasting. No other platform comes close. Apple Podcasts is where existing subscribers consume content. YouTube is where new audiences find you. Those are fundamentally different functions, and for creators in growth mode, discovery wins."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "YouTube also solves a problem Apple doesn't address: video search. YouTube is the second-largest search engine in the world. Apple Podcasts doesn't highlight video in search results. That means the discoverability gap between the two platforms for video content is enormous. A well-optimized YouTube video surfaces in Google search, YouTube search, and recommendation feeds. An Apple Podcasts video surfaces only if someone is already subscribed to your show or browsing a curated category."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The revenue comparison is more nuanced than the headline numbers suggest. YouTube takes approximately 45% of ad revenue, but it also provides the audience. If YouTube's discovery engine is responsible for 60% of your growth, that 45% starts looking less like a cut and more like a customer acquisition cost. Apple's creator-friendly economics only matter if the audience is already there."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The honest assessment: "
+        },
+        {
+          "text": "Apple built a better monetization structure on a smaller distribution platform.",
+          "bold": true
+        },
+        {
+          "text": " YouTube offers worse economics on a distribution platform that's ten times larger. For established shows with loyal Apple Podcasts audiences, Apple's model is clearly better. For shows that need to grow, YouTube remains essential, and Apple's video launch doesn't change that calculus."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The strategic play for well-resourced operations is distribution across both, with monetization strategy tailored to each platform's economics. Treat YouTube as your growth engine and Apple as your monetization engine. That's not a compromise. That's playing each platform to its strength."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "What are the technical limitations of Apple Podcasts video at launch?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The launch has real gaps that affect the viewer experience and creator strategy. Apple TV does not support video podcasts natively. Users can only access video through AirPlay from another device. Video streaming is disabled by default on mobile data, requiring listeners to manually opt in. Time-synced transcripts are not yet available for video, which means accessibility for video content lags behind what Apple already offers for audio. Chapters do not appear on the video scrub bar. Video does not receive highlighting in Apple Podcasts search results."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The exclusion of self-hosted shows is the most significant structural limitation. Every previous Apple Podcasts feature, including transcripts, chapters, and paid subscriptions, worked through open RSS. Any creator could implement them. Video requires a direct API integration that only participating hosting providers can offer. This is the first gatekeeper Apple has placed between creators and their platform, and it fundamentally narrows the open ecosystem that defined podcasting for two decades."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Matt Deegan of Podcast Discovery noted that HLS video makes Apple an active participant in the monetary flow rather than a passive distribution channel. Steve Ackerman, formerly of Sony Music, pointed out that neither YouTube nor Spotify currently offer Apple's specific dynamic ad capability, positioning Apple competitively even with a smaller user base."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "What does this mean for the future of video podcasting?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Apple, YouTube, and Spotify are now competing directly for where video podcasters build their businesses. Each platform has placed a different bet. YouTube bet on audience scale and discovery. Spotify bet on platform integration and reduced eligibility thresholds (cut by 80% in January 2026). Apple bet on creator control and advertising economics."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The question worth sitting with isn't which platform is best. It's what each platform's bet reveals about how they see the creator relationship. YouTube treats creators as content suppliers for an ad-supported ecosystem. Spotify treats them as catalog assets. Apple, at least with this move, is treating them as independent businesses who need infrastructure, not intermediaries."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "That framing sounds generous to Apple, and it probably is. Apple's impression fees on ad networks are a new revenue stream that didn't exist last month. The hosting provider partnerships create dependency that benefits Apple's ecosystem control. There's self-interest in the generosity, as there always is."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "But the structural difference is real. Creator-controlled dynamic video ads, served through existing hosting relationships with no platform revenue share, is a meaningfully different offer than what exists anywhere else. Whether that advantage holds depends on whether Apple can grow its video audience to a scale that matters, or whether creators will pocket the better economics on a smaller platform while doing their real growth work on YouTube."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The honest answer: probably both. And that's fine. The era of single-platform podcast strategy was already over. Apple just gave creators one more reason to distribute everywhere and monetize differently on each."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "Frequently Asked Questions"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Can I upload video directly to Apple Podcasts?",
+          "bold": true
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "No. Video must be distributed through a participating hosting provider that has integrated with Apple's HLS API. Self-hosted shows and non-participating hosts cannot access video features."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Does Apple Podcasts video work on Apple TV?",
+          "bold": true
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Not natively. Video podcasts are available on iPhone, iPad, Apple Vision Pro, and the web. Apple TV users can only access video through AirPlay from another device."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "How much does Apple charge for video podcast distribution?",
+          "bold": true
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Apple charges nothing for distribution to hosting providers or creators. Apple charges ad networks an impression-based CPM fee for dynamic ads served through HLS Interstitials. Baked-in ads have no associated Apple fees."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "What video formats does Apple Podcasts support?",
+          "bold": true
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Apple Podcasts uses HLS multivariant playlists, which require hosting providers to deliver content in segmented streams with adaptive quality levels. This is handled by your hosting provider, not by creators directly."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Will Apple Podcasts video replace my audio podcast?",
+          "bold": true
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "No. Video and audio coexist on a single show page. Listeners choose their preferred format. Existing audio subscribers are unaffected, and download counts remain unified."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Is video podcasting worth the investment for enterprise teams?",
+          "bold": true
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "If you already produce video content, adding Apple distribution through your hosting provider is a low-cost expansion. If you'd need to build video production capability from scratch, evaluate whether the audience reach and monetization opportunity justifies the investment. The platform availability changed. The production economics did not."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "children": [
+        {
+          "text": "Sources"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "href": "https://podnews.net/article/video-apple-podcasts-details",
+          "children": [
+            {
+              "text": "Video in Apple Podcasts \u2014 all the details"
+            }
+          ]
+        },
+        {
+          "text": " by James Cridland, Podnews"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "href": "https://www.apple.com/newsroom/2026/02/apple-introduces-a-new-video-podcast-experience-on-apple-podcasts/",
+          "children": [
+            {
+              "text": "Apple introduces a new video podcast experience on Apple Podcasts"
+            }
+          ]
+        },
+        {
+          "text": " by Apple Newsroom"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "href": "https://soundsprofitable.com/article/bigger-picture-apple-hls/",
+          "children": [
+            {
+              "text": "The Bigger Picture Behind Apple HLS"
+            }
+          ]
+        },
+        {
+          "text": " by Bryan Barletta, Sounds Profitable"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "href": "https://ppc.land/apples-hls-video-podcast-gambit-could-reshape-the-advertising-landscape/",
+          "children": [
+            {
+              "text": "Apple's HLS Video Podcast Gambit Could Reshape the Advertising Landscape"
+            }
+          ]
+        },
+        {
+          "text": " by PPC Land"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "href": "https://9to5mac.com/2026/03/23/ios-26-4-users-can-try-the-new-apple-podcasts-video-experience-with-these-shows/",
+          "children": [
+            {
+              "text": "iOS 26.4 users can try the new Apple Podcasts video experience"
+            }
+          ]
+        },
+        {
+          "text": " by 9to5Mac"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "href": "https://www.ausha.co/blog/video-podcasts-hls-apple-podcasts/",
+          "children": [
+            {
+              "text": "Arrival of Video (HLS) on Apple Podcasts: What You Need to Know"
+            }
+          ]
+        },
+        {
+          "text": " by Ausha"
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "href": "https://storiesthatlead.co",
+          "children": [
+            {
+              "text": "Listen to Stories That Lead"
+            }
+          ]
+        },
+        {
+          "text": " for more on podcast strategy and AI-ready communications, or explore "
+        },
+        {
+          "type": "link",
+          "href": "https://enterprisepodcaster.com",
+          "children": [
+            {
+              "text": "Enterprise Podcaster"
+            }
+          ]
+        },
+        {
+          "text": " if you're building a branded podcast program for your organization."
+        }
+      ]
+    }
+  ]
+}
