@@ -124,7 +124,7 @@ export default function Home() {
       {/* ── Countdown / Now Live Section ── */}
       <section className="py-16 bg-navy border-y border-navy-light/20">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <CountdownTimer targetDate="2026-03-31T09:00:00-04:00" />
+          <CountdownTimer targetDate="2026-04-06T09:00:00-04:00" />
         </div>
       </section>
 
