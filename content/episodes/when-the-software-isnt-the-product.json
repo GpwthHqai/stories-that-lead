@@ -11,6 +11,7 @@
   "embedCode": "<iframe id=\"hypecastIframe\" src=https://vernonross.hypecast.one/iframe-plugin/iframe-player?episodeId=061c2f40-176e-481e-b250-2cddc54ef254 width=\"100%\" frameborder=\"0\" scrolling=\"no\" ></iframe>\n<script src=\"https://vernonross.hypecast.one/js/iframe-resizer.bundle.js\"></script>",
   "audioUrl": "https://sphinx.acast.com/p/open/s/69a18dd5519334f049dcd8f2/e/69d344dfe9dcab307702a293/media.mp3",
   "artworkUrl": "https://assets.pippa.io/shows/cover/1772195211904-cb270fa7-33e3-410c-a1d4-549929597f6e.jpeg",
+  "spotifyUrl": "https://open.spotify.com/show/0FY4pghyabqr8lmKkv7T9q?si=9-m60PHaSCOIqTHsOm6aCg",
   "keywords": "enterprise podcasting, internal communications, B2B SaaS, customer success, podcast distribution, corporate storytelling, Hypecast, content strategy, employee engagement, podcast platform",
   "frameworks": "MicroArc, Kishotenketsu",
   "showNotes": [
