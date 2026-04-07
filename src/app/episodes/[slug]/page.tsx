@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getEpisodeBySlug, getAllEpisodeSlugs } from "@/lib/episodes";
 import { DocumentRenderer, type DocumentNode } from "@/lib/document-renderer";
 import Link from "next/link";
+import EpisodePlayer from "@/app/components/EpisodePlayer";
 
 // Generate static params for all episodes
 export function generateStaticParams() {
@@ -45,7 +46,7 @@ export async function generateMetadata({
       description,
       images: [
         {
-          url: episode.coverImage || "/images/og-image.jpg",
+          url: episode.artworkUrl || episode.coverImage || "/images/og-image.jpg",
           width: 1200,
           height: 630,
           alt: `${episode.title} - Stories That Lead Podcast`,
@@ -58,7 +59,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [episode.coverImage || "/images/og-image.jpg"],
+      images: [episode.artworkUrl || episode.coverImage || "/images/og-image.jpg"],
     },
   };
 }
@@ -99,6 +100,14 @@ export default async function EpisodePage({
       name: "Vernon Ross",
       url: "https://vernonross.com",
     },
+    ...(episode.audioUrl
+      ? {
+          associatedMedia: {
+            "@type": "MediaObject",
+            contentUrl: episode.audioUrl,
+          },
+        }
+      : {}),
     ...(episode.guestName
       ? {
           contributor: {
@@ -217,7 +226,7 @@ export default async function EpisodePage({
             </p>
 
             {/* Platform Links */}
-            {(episode.appleUrl || episode.spotifyUrl || episode.amazonUrl) && (
+            {(episode.appleUrl || episode.spotifyUrl || episode.youtubeUrl || episode.amazonUrl) && (
               <div className="flex flex-wrap gap-3 mt-6">
                 {episode.appleUrl && (
                   <a
@@ -239,6 +248,16 @@ export default async function EpisodePage({
                     Spotify
                   </a>
                 )}
+                {episode.youtubeUrl && (
+                  <a
+                    href={episode.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-navy-light/30 border border-navy-light/30 rounded-lg text-sm text-gray-300 hover:border-gold/50 hover:text-gold transition-colors"
+                  >
+                    YouTube
+                  </a>
+                )}
                 {episode.amazonUrl && (
                   <a
                     href={episode.amazonUrl}
@@ -254,8 +273,27 @@ export default async function EpisodePage({
           </div>
         </section>
 
-        {/* Embedded Player */}
-        {episode.embedCode && (
+        {/* Audio Player */}
+        {episode.audioUrl ? (
+          <section className="pb-8">
+            <div className="max-w-4xl mx-auto px-6">
+              <EpisodePlayer
+                audioUrl={episode.audioUrl}
+                artworkUrl={episode.artworkUrl || '/images/og-image.jpg'}
+                episodeNumber={episode.episodeNumber}
+                title={episode.title}
+                guestName={episode.guestName}
+                guestTitle={episode.guestTitle}
+                duration={episode.duration}
+                publishDate={episode.publishDate}
+                appleUrl={episode.appleUrl}
+                spotifyUrl={episode.spotifyUrl}
+                youtubeUrl={episode.youtubeUrl}
+                amazonUrl={episode.amazonUrl}
+              />
+            </div>
+          </section>
+        ) : episode.embedCode ? (
           <section className="pb-8">
             <div className="max-w-4xl mx-auto px-6">
               <div
@@ -264,7 +302,7 @@ export default async function EpisodePage({
               />
             </div>
           </section>
-        )}
+        ) : null}
 
         {/* Main Content */}
         <section className="py-12">
@@ -282,6 +320,23 @@ export default async function EpisodePage({
                       <DocumentRenderer
                         document={episode.showNotes as DocumentNode[]}
                       />
+                    </div>
+                  </div>
+                ) : null}
+
+                {/* FAQ Section */}
+                {episode.faq ? (
+                  <div className="mt-12">
+                    <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+                      <div className="w-1 h-6 bg-gold rounded-full" />
+                      Frequently Asked Questions
+                    </h2>
+                    <div className="space-y-4">
+                      <div className="prose-stl bg-navy-light/20 rounded-xl p-6 border border-navy-light/20">
+                        <DocumentRenderer
+                          document={episode.faq as DocumentNode[]}
+                        />
+                      </div>
                     </div>
                   </div>
                 ) : null}

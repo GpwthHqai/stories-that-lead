@@ -71,8 +71,19 @@ export default config({
         spotifyUrl: fields.url({
           label: "Spotify URL",
         }),
+        youtubeUrl: fields.url({
+          label: "YouTube URL",
+        }),
         amazonUrl: fields.url({
           label: "Amazon Music URL",
+        }),
+        audioUrl: fields.text({
+          label: "Direct Audio URL",
+          description: "Direct MP3 URL from RSS feed (powers the custom player)",
+        }),
+        artworkUrl: fields.text({
+          label: "Artwork URL",
+          description: "Episode or show artwork URL (powers the custom player)",
         }),
         keywords: fields.text({
           label: "SEO Keywords",
@@ -92,6 +103,12 @@ export default config({
         transcript: fields.document({
           label: "Full Transcript",
           description: "Paste or upload the full episode transcript",
+          formatting: true,
+          links: true,
+        }),
+        faq: fields.document({
+          label: "FAQ",
+          description: "Frequently asked questions related to this episode",
           formatting: true,
           links: true,
         }),

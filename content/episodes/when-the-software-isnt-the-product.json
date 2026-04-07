@@ -1,0 +1,1132 @@
+{
+  "title": "When the Software Isn't the Product",
+  "episodeNumber": 1,
+  "publishDate": "2026-04-06",
+  "description": "Hypecast CEO Maximilian Conrad on why enterprise podcast software fails without helping people find their voice. The real product isn't the platform.",
+  "guestName": "Maximilian Conrad",
+  "guestTitle": "CEO & Founder, Hypecast",
+  "guestLinkedIn": "https://www.linkedin.com/in/maximilianconrad1000/",
+  "duration": "30 min",
+  "coverImage": null,
+  "embedCode": "<iframe id=\"hypecastIframe\" src=https://vernonross.hypecast.one/iframe-plugin/iframe-player?episodeId=061c2f40-176e-481e-b250-2cddc54ef254 width=\"100%\" frameborder=\"0\" scrolling=\"no\" ></iframe>\n<script src=\"https://vernonross.hypecast.one/js/iframe-resizer.bundle.js\"></script>",
+  "audioUrl": "https://sphinx.acast.com/p/open/s/69a18dd5519334f049dcd8f2/e/69d344dfe9dcab307702a293/media.mp3",
+  "artworkUrl": "https://assets.pippa.io/shows/cover/1772195211904-cb270fa7-33e3-410c-a1d4-549929597f6e.jpeg",
+  "keywords": "enterprise podcasting, internal communications, B2B SaaS, customer success, podcast distribution, corporate storytelling, Hypecast, content strategy, employee engagement, podcast platform",
+  "frameworks": "MicroArc, Kishotenketsu",
+  "showNotes": [
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "What happens when enterprise podcast software meets the reality of corporate storytelling?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The answer is less about features and more about confidence. Hypecast CEO Maximilian Conrad built an all-in-one enterprise podcast platform after watching great internal content die on L'Oreal's intranet. But the product that actually retains customers at near-0% churn isn't the software. It's the support system that helps non-creators find their voice."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "How did Hypecast go from an internal L'Oreal pain point to serving 10,000-employee enterprises?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Conrad started podcasting in 2014, before he'd ever listened to a podcast. While working at L'Oreal, he saw firsthand how internal podcast content with real value was getting buried as random MP3 files on corporate intranets. Nobody was listening. Not because the content was bad, but because the delivery experience was broken. He and co-founder Simon built Hypecast to give enterprises the Spotify-level UX they needed, wrapped in enterprise-grade security. Their path from pilot customer to E.ON (10,000 employees, 20-30 internal podcasts) came through network introductions, not outbound sales. A former L'Oreal colleague connected them to a platform partner, who six weeks later connected them to E.ON. According to Conrad, \"How do you do successful sales in B2B SaaS? I don't know. I still don't know.\""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "Why does Hypecast build tools for accountants instead of content creators?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Every feature Hypecast has added, from recording studios to AI-generated content to video support, came from a specific request by someone with no previous podcasting experience. Conrad's design philosophy targets corporate employees who never asked to be podcast hosts: HR teams, marketing departments, engineers. \"We're not building tools for content creators. We're building tools for accountants, HR, marketing departments,\" Conrad explains. Certain capabilities are deliberately excluded. \"There are certain things that you can't do with our tool, but that's by design, not by accident.\""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "What does near-0% customer churn actually look like in practice?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Hypecast runs bi-weekly or monthly check-ins with most customers. These aren't upsell calls. They're content strategy sessions focused on helping clients find their voice, develop interview techniques, and build confidence. CTO Simon regularly joins customer calls to gather real user data. One client, Roku, built an engineering podcast that connected distributed teams across continents. A listener who had never met the host wrote in to say they could hear the host's confidence growing over six episodes. Conrad's response time philosophy: invest 15 seconds to acknowledge a message, even if the full answer takes days. \"We've all been ghosted in the business world. We don't want to be the people not responding.\""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "What is the single biggest lesson from five years of building an enterprise SaaS company?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Perseverance. Conrad is direct about this: \"It's not always that the greatest idea wins. It's not always that the biggest money wins. It's really if you're willing to put in the time and stay the course. Baby steps. Baby steps. Baby steps.\" He pairs that with radical honesty toward customers: \"I don't want a customer that's not happy with my solution. I'd rather tell you this is not right for you.\""
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "Frequently Asked Questions"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "children": [
+        {
+          "text": "What is Hypecast and who is it built for?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Hypecast is an all-in-one enterprise podcast platform that handles recording, editing, distribution, analytics, and AI-generated content. It's designed specifically for corporate teams with no previous podcasting experience, including HR, marketing, engineering, and internal communications departments. The platform provides enterprise-grade security with a consumer-grade listening experience."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "children": [
+        {
+          "text": "How did Hypecast land enterprise clients like E.ON and Roku?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Hypecast's early enterprise growth came through network introductions rather than traditional outbound sales. Their first major enterprise client, E.ON (10,000 employees), found them through a platform partnership with Halo, a social intranet provider. Conrad credits relationship-building and showing up consistently as the primary driver of B2B customer acquisition."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "children": [
+        {
+          "text": "What makes Hypecast different from other podcast hosting platforms?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Unlike traditional podcast hosting services that only provide distribution, Hypecast includes ongoing content strategy support. They run bi-weekly or monthly check-ins with customers focused on storytelling development, not upselling. Their CTO regularly joins customer calls for direct user feedback. This approach has resulted in near-0% customer churn."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "children": [
+        {
+          "text": "Why does Hypecast focus on simplicity over advanced features?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Corporate podcast hosts are typically employees whose primary job isn't content creation. Their managers support the podcast initiative but won't allocate 50% of an employee's time to production work. Hypecast deliberately limits certain advanced features to keep the platform accessible to non-technical users. Every feature addition responds to actual customer requests from users with no prior podcasting background."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "children": [
+        {
+          "text": "What role does intuition play in Hypecast's product development?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Conrad describes Hypecast's approach as a blend of customer feedback validation and trained intuition. After 10-15 years of professional experience before founding Hypecast, Conrad developed the habit of writing down product ideas and tracking whether others eventually built them. This pattern recognition now guides feature prioritization, with customer feedback serving as validation rather than sole direction."
+        }
+      ]
+    }
+  ],
+  "transcript": [
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "The Inaugural Episode"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Hey everyone, I'm Vernon Ross and this is Stories That Lead. It's a new podcast. Every week I'm going to sit down with leaders and learn what they've done, the frameworks they use to build the things that they're building. We're going to be talking about a system I put together, a framework called the MicroArc framework, built on a 4,000-year-old East Asian narrative of storytelling. It's a structure called Kishotenketsu. I'll talk a lot about that within this podcast. You're going to learn a lot about storytelling for revelation, not necessarily conflict stories, which fits so many things that we do today."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "So as my first guest to the podcast, I'm happy to welcome Maximilian Conrad from Hypecast. He's the CEO and founder of this podcast hosting and distribution company. Max, welcome to the podcast, the inaugural first episode."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " Thank you so much for having me. It's an honor and it's so much fun because it's great to be kind of like a guinea pig to this. I'm wondering, what kind of story are you going to get out of me? Are you going to make me look good in my story? I love it. I'm so happy to be here. Thanks for having me."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " No man, this is a pleasure. I really appreciate you being the first one, the guinea pig for the podcast."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " In a positive way. In a positive way, 100%."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Absolutely. So tell us a little bit about Hypecast and how this came about. How did you establish this company in Germany?"
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "Before Anyone Was Listening"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " It all started with me being a podcaster. I started podcasting back in 2014. I started doing a podcast before listening to a podcast. That's kind of how I am. I love to talk. So I got into podcasting and learned a little bit about it. It seems not too distant in the past, but it still feels like early days of people podcasting."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "I was doing my podcast and then I learned more about how to podcast. I used to work with L'Oreal, and I was involved in their internal podcast. We were doing an internal podcast and we really struggled with distribution. We had great content but we struggled with distribution. Nobody was listening to it. You just had random MP3 files somewhere on your intranet and people didn't connect to it. We were trying to figure out a better way to get the content to people in a way that we all know from our private consumption."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "I was looking around, didn't find a solution, and said, \"Well, this is interesting. There's nothing here. Podcasting is great, so let's figure this out.\" I talked to my best friend and co-founder Simon about this for a little bit. Came up with an idea, came up with the concept. Then I thought, well, social internet platforms moved into the corporate space. We had Facebook, now we have Staffbase, Halo. We're now on Teams and Zoom. We were using ICQ and Skype before that in private consumption."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Oh, ICQ. I see you."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " So we're doing private podcast. How do we transfer that into the corporate world? And that's how we started Hypecast. That's how the journey started."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "The Misconception About Problem-Solving"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Nice. So basically you solved the problem."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " Yeah. But it is something that people often talk about. When you start a company, always look for a problem and find a solution for it. And maybe the misconception is that everybody instantly sees that problem and wants your solution. I think that the problem-solution thing is not just in the short term but in the long term what makes your company successful. Because people over time will have that struggle again and again, and then you will have the solution for that."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "It's not like in my head it was, \"Wow, that's a problem, I have a solution, so right from the beginning we should have a ton of customers, a ton of revenues. This should be an instant win.\" Which I was mistaken about. But now four years in, the problem still exists for new people coming in, new organizations. And ideally and hopefully they find our solution to be exactly what they need for that specific problem. Fortunately enough, it does happen more often than not."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "From Pilot Customer to 10,000 Employees"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Who was your second customer?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " Our second customer was a pilot customer called Visha. Visha is an advertising company that does advertising for cinemas. They do media and advertising around movies that go to cinemas in Germany and Europe. We were part of this accelerator program and they were our second pilot customer that we built this out from. They were really nice and really supportive. They're the only customer that we kind of lost after the pilot. They were going through some transformation and the podcast wasn't the right thing at the time. So we also said, \"Hey, maybe you don't want to continue this.\" It was a two-way parting."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "But then customer three was E.ON, with 10,000 employees. And that was wild."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Oh wow! How did that come about? How did you work into getting that third customer?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " And that is still something. How do you do successful sales in B2B SaaS? I don't know. I still don't know."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Yeah, I want to know. How did you go from one thing to the next?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " Okay, so I was working with somebody at L'Oreal who then moved to work at a different company. He was very good in performance marketing. So I reached out to him to get some insights on how to do performance marketing for what we were doing. At the same time we were trying to look at integrations into social intranet platforms like Staffbase, like Halo."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "We were reaching out to Halo and they weren't really interested because we were so new on the market and they hadn't established a whole plugins thing. Then by chance I mentioned the name of the guy doing the performance marketing stuff, and the guy in charge of partnerships at Halo said, \"Oh, I used to work with him. I really like him. We just hung out yesterday in Berlin. So let's see and figure this out.\""
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "So he came in early on, supported us. We were plugin partner number one for Halo. We developed how the plugin integration works. Then four weeks or six weeks later, E.ON reached out to Halo, which was their social intranet platform provider, saying, \"Hey, we have 20 or 30 different podcasts. We're looking for a solution. Do you know someone or have a solution?\" And they said, \"We just built this.\" And E.ON said, \"Okay, we want it.\" And that was it."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Nein."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " It's very random to an extent. And maybe now that I spell it out, a lot of it is network. Network introductions, connections. Which still works today where we meet people or we have people make introductions to our product or to our company. But it's very difficult to replicate that."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Right."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " But I think it's getting out there, talking to as many people as possible, and ideally somewhere there's connections happening."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "From Distribution Tool to All-in-One Platform"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " A lot of people in the podcast space, particularly when they think they have a solution, want to launch a successful company. It's a big journey from \"I have an idea, we can fill this need for this one company\" to actually establishing a whole company technology. We're actually on Hypecast right now recording this podcast. How did you go from concept, \"There's nowhere great for these podcasts to live at L'Oreal, so let's create a solution,\" to fully developing something that could support a 10,000-person organization with multiple podcasts?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " The initial idea was we need distribution. We need to get the podcast to people with the security that I know as an enterprise, but with the user experience that users know from their Spotify, Netflix, whatever on-demand platforms. That was where we started from."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Then people said, \"Wouldn't it also be great if I could listen to more than just the company internal podcast? Could we have some other podcasts in there too?\" So we included curated podcasts. Now our customers can say, \"I want to have the Stories That Lead podcast because it's an awesome show done by Vernon, and I want to have that as a training tool within my organization.\" So now we can curate that in."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "We always said it's a great start, but there's that difficulty: you have the platform and then you have one podcast on there. It would be the same as having Delivery Hero or Uber Eats on your phone and there's just one pizza place on there. That app is going to suck. So to make the experience better, we had to curate podcasts in there."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Then people said, \"I can put my podcast here, but how do I record it?\" So we're like, \"Oh, okay. We need to create a recording studio.\" Because there are solutions out there, but they're maybe too creative-driven or too creator-oriented. Everything we did was built for people working in organizations and corporations who have no previous experience. We didn't want to build tools for content creators. We're building tools for accountants, HR, marketing departments. They should still have a product that creates a great solution. You can use it if you're advanced, but that's always what we target for. There are certain things that you can't do with our tool, but that's by design, not by accident."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Then when people recorded something they were like, \"But I want to add an intro and I want to make it sound a little bit better because I didn't select the right microphone.\" So, \"Oh, okay, now we need an editor.\" We went from there. Then you need analytics."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "One of the main things is we always work off customer feedback and then a few things that are intuition. I was pushing very much for, \"We need to keep video in mind because it's going to happen.\" And people said, \"No, it's an audio-only thing.\" And we said, \"People are going to ask for it, so let's have a strategy for it when the demand gets big enough.\" We were early on this one. We were early on AI tools where you can create podcasts with just AI."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Now it has all the features that you need, all the nice things that we see out there as podcast creators and that we know from the creative space, simplified and put into one tool so that you don't have to get 17 tools. Because that's not your job. And you said it really well once: you don't want to be the producer. You want to be the host, not the producer of your own podcast."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Yeah."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " For a lot of independent podcasters, that is one of the biggest struggles. They spend a lot of time on things they didn't sign up for. They want to have a microphone and tell the story, not go in and do the editing and the cutting and the uploading."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "And within the corporate space it's even worse, because then your boss will say, \"I'm not paying you to spend hours on this stuff. I like that you're getting the message out there. I support your idea. But if it's going to take up 50% of your time, my paycheck is saying something different. Now you're doing not that anymore.\" So it needs to be super simple."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Yeah, that is a point you bring up, and it's something I actually run into quite a bit when talking to folks. You want to be the talent. We just need you to be the talent. All you have to do is go into the studio, hit record, and that's all you have to do. Then afterwards we can walk through how you can edit and everything. It's an all-in-one platform. It saves people the problems of going to this platform or that platform. One for editing, one for if they want to do something with AI, what if they just want to have a news update that they don't want to read themselves? The very simple stuff. You can do all of that in Hypecast."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "Intuition Over Frameworks"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Something that I thought was interesting that we talked about is the whole customer acquisition part and how you go about running Hypecast and stuff that you do. Do you feel like there's a certain framework that you look at when you're developing things you're bringing to market, or is it purely based off customer feedback?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " Not purely. I have to admit, I stay away from frameworks. I stay away from those self-help books telling you what to do. I don't know if it's the right thing to do or not. I'd rather go out, talk to people, and get those intangibles from the conversations."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "When we started the company five years ago, I'm turning 40 this year, so we were 35. My co-founder is the same age. So we weren't the youngest founders. We came out of 10 to 15 years of working experience with different organizations. We already had built a network. We already had a chance to develop our gut feeling."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Intuition is something you can train, or at least prove yourself right on. It's like, \"Is my gut feeling on this working or not?\" And you had the chance to test it out three or four times, maybe five times in your career over those 15 years. So you start trusting yourself. When I came up with ideas, I wrote them down to see within the next two or three years if anybody was developing the same thing. And then you get a feeling for it. \"Hey, I had this idea, somebody built it, this is successful.\" I wasn't upset about it. I was like, \"I kind of had this idea and it worked.\" So it's nice to see that."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "So there are a few things that I see out there and say, \"This could be interesting. What would that look like?\" And then turning those loose ideas into products, I think we're quite good at that."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The other part is getting those first five customers and listening to them. It's such an accelerator of product development. We build analytics. We see a lot of great platforms and then we see our customers asking, \"I want to do this and this and this.\" And we're like, \"Oh, okay, that's what you want to do.\""
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "We kind of provide the frame generally. It's not just, \"You should develop this\" and then we go and do it. It's more like we have a gut feeling about a certain thing, about features and where the product should go, and then we validate that gut feeling by customer feedback. That's kind of the framework that we go by, I would say."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "The Software Is Just the Enabler"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Yeah, that makes sense. I think Simon Sinek talks about going out and seeking customer feedback and then making sure you're developing your product based on that. Sounds like you do a lot of that already."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " And it's less surveys. We're really focused on customer success and really staying close to them. For most customers we're trying to do bi-weekly, or at least once a month, a check-in to talk about where they're going from a content perspective. Because just having a great software isn't the thing that's going to get you to where you want to go."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "If the best software can't save terrible content, right? So we're trying to make sure that we support our customers on finding their voice, finding their strategy, finding the right interview questions, getting comfortable doing a podcast, getting more relaxed, being less nervous. All that kind of stuff, we work with them on that. And while we're doing this, we can present new ideas to them and we also hear, \"Oh, I was struggling with this.\""
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "It's more qualitative feedback on a very regular basis. And out of that we develop. We're not going out doing big surveys and asking, \"Would you rather have this feature or that feature?\" It's very qualitative feedback because we're trying to stay very close. You're going to get more distant from your customers, whether you want to or not, the bigger your organization grows. But as long as you can maintain very close proximity to your customers, I think the longer you can do that, the more successful you're going to be."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "When Someone You've Never Met Notices You Growing"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " That's something I noticed when I was first looking at Hypecast, that I like about you guys. You're very involved with your clients after they sign up. So many services out there, if you're thinking about launching a podcast and you look at some of these podcast hosting companies, they are just that: a podcast hosting company. You can put your content on their platform and then that's it. There's no guidance, there's no connection, there's no helping you develop that story."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Almost 100% of the time, the place where I see that you guys are different, and part of what I think is the reason you're as successful as you are, is because you do stay involved. You're trying to help your clients develop better storytelling methods within their organization and to bring out some of those stories. A great example is one of the clients that we worked on together. You're actually helping them with some of the stuff they've done and getting their first season of podcasts recording. I don't know, can I mention them on this podcast?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " Yeah, you're 100% fine."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Yeah, so you're working with Roku. I have a relationship with Roku, kind of brought them into the Hypecast family. And their podcast has been really successful. It's not the common thing that you hear about. It's for engineers, right?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " Yeah, it's for distributed teams, engineers. I think it's a great story. They really listened. They had their clear view. They had a direction, and they developed their own voice. \"This is what I want, this is what I don't want.\" But they were also very open to listen. Don't do it as a marketing channel. Really look for what makes your company tick."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "I think they play it with a little humor. You can be humorous and still be serious. You can have fun doing the stuff you do at work. You're allowed to laugh at work. And it's still not all jokes. You can still have a good time at work and still be very serious about what you do. I think they really got that down."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The feedback they're getting is really positive. People connect across continents, even though they don't see each other. That was my favorite. When I got the feedback from them saying somebody reached out and just told them, \"Hey, you sound so much more confident after six episodes than from the beginning. I could hear that you were a little nervous.\" And they asked, \"Do you know that person who wrote that?\" And it was like, \"No, never heard of them.\""
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "That thing was so amazing to me because they built a personal connection just on the way they delivered the messages. And if you build that connection, of course they're going to remember what you were talking about. That is just fantastic. Those stories really make me happy, and we're like, \"Let's see if we can do that for other companies as well.\""
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "We can always improve. Everything I'm talking about, we're definitely not 100% there. But that's what we're aiming for. And again, if your product, the product that our customers are producing, is a podcast, if nobody listens to it, it can sound really great, but the content is not working. Or people are struggling too much to get it released or to build up the confidence to just go out and hear themselves talk."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "The best software is not going to solve that. They can say, \"Yeah, recording was easy, but nobody listened to it.\" Why did nobody listen to it? They could reach it, but the content didn't work. They're going to disconnect from our company and they're not going to sign again for year number two. So of course we need to stay on. Because then the real work starts. I think the software is just the enabler of what you want to do. We want to help you develop your story, and the software is just the thing that gets you there."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "The Biggest Lesson"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " What would you say is the most valuable lesson you've learned in all of this? Building a company over the past five years, working with some of the largest companies out there. You've worked with McDonald's, L'Oreal, Roku, a huge leader in the streaming market. What do you think is one of the biggest lessons you've learned from all of that?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " There's a ton of stuff to learn. Every day. That's what I love so much about having started my own company. Learning and learning and learning, and really like every day figuring out something new."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "But the biggest lesson, from an outside looking in to when you want to start a company: the thing is perseverance. Just continue doing it. It's going to feel tough. But I think it's not always that the greatest idea wins. It's not always that the biggest money wins. It's really if you're willing to put in the time and stay the course and just keep going. Baby steps. Baby steps. Baby steps."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "I think those are the ones who succeed. If there's two people and one day it's the decision of, \"Do I really believe this is going somewhere?\" Most people say, \"It's too difficult.\" But if you're the one saying, \"I'm going to tread on,\" even though it might seem so far away, I think that's going to bring your success. Just continue doing what you do and what you love to do. I think that's the thing."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "And with customers, looking at that perspective, that's my view from inside to the outside world. With customers: try to be very open and honest with your customers. Don't try to rip them off. They're not stupid. Also challenge them. Be honest. I don't want a customer that's not happy with my solution. I'd rather tell you this is not right for you. Tell them if you're the right partner or not."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Being honest, being open, and being interested in what they want to achieve. Listen. I think from that perspective, you're going to be very successful with your customers. They're going to love you for that. We're close to 0% churn, and I think that's part of the reason. Not just me from a content side, but also our tech teams. Our CTO Simon jumps on calls with customers to help them, because it helps him understand the product. It helps him understand what they're looking at. He gets real-life data from customers."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "Not being too above-it-all to jump on those calls is what's going to make you successful in the long term, I think."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "The 15-Second Rule"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Yeah, I think the level of accessibility that you all have is amazing. For customers to be able to reach out and just, if they're having an issue, literally get someone on the phone, or at least a really healthy email exchange about what's happening."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " Yeah, and it's because we all know this. We've all been ghosted in the business world. We've all been reaching out and not getting any response. Not after the third, not after the fourth email. And it's frustrating. We said we've experienced that so many times, we don't want to be the people not responding."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "And even if it's the message, \"Hey, I can't help you right now. I'm going to get back to you in two days or something.\" But I'm putting in the 15 seconds to write you that message. Ideally. I know it doesn't work all the time, but at least that's what we're aiming for. It works close to 100% of the time."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "And people appreciate it because we treat people and our customers the same way we want to be treated by our customers or our partners or where I'm the customer. So that's what we're always trying to do."
+        }
+      ]
+    },
+    {
+      "type": "divider",
+      "children": [
+        {
+          "text": ""
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "children": [
+        {
+          "text": "Closing"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " Cool. And I think that's a perfect note to end it on. Max, thanks man. I really do appreciate you coming on, being the first one for the Stories That Lead podcast. And hopefully we'll have a lot more of these coming."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "MAX:",
+          "bold": true
+        },
+        {
+          "text": " Thank you so much. And I like spelling a few of those things out. It really helped me to reflect and learn stuff that sometimes is just in your head, but when you say it out loud it becomes really clear. So thank you for that. That was a lot of fun. Thanks for having me, Vernon. All the best with the podcast. I'm going to recommend it everywhere. Go at it, man. Stories That Lead. I love it."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "text": "VERNON:",
+          "bold": true
+        },
+        {
+          "text": " So awesome. Thanks man, see you."
+        }
+      ]
+    }
+  ]
+}

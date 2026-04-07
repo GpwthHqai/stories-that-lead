@@ -13,13 +13,17 @@ export interface Episode {
   duration: string;
   coverImage?: string | null;
   embedCode?: string;
+  audioUrl?: string;
+  artworkUrl?: string;
   appleUrl?: string;
   spotifyUrl?: string;
+  youtubeUrl?: string;
   amazonUrl?: string;
   keywords?: string;
   frameworks?: string;
   showNotes: unknown;
   transcript: unknown;
+  faq: unknown;
 }
 
 const EPISODES_DIR = join(process.cwd(), "content", "episodes");
