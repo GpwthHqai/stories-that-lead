@@ -226,7 +226,7 @@ export default async function EpisodePage({
             </p>
 
             {/* Platform Links */}
-            {(episode.appleUrl || episode.spotifyUrl || episode.youtubeUrl || episode.amazonUrl) && (
+            {(episode.appleUrl || episode.spotifyUrl || episode.youtubeUrl || episode.amazonUrl || episode.iheartUrl) && (
               <div className="flex flex-wrap gap-3 mt-6">
                 {episode.appleUrl && (
                   <a
@@ -268,6 +268,16 @@ export default async function EpisodePage({
                     Amazon Music
                   </a>
                 )}
+                {episode.iheartUrl && (
+                  <a
+                    href={episode.iheartUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-navy-light/30 border border-navy-light/30 rounded-lg text-sm text-gray-300 hover:border-gold/50 hover:text-gold transition-colors"
+                  >
+                    iHeart
+                  </a>
+                )}
               </div>
             )}
           </div>
@@ -290,6 +300,7 @@ export default async function EpisodePage({
                 spotifyUrl={episode.spotifyUrl}
                 youtubeUrl={episode.youtubeUrl}
                 amazonUrl={episode.amazonUrl}
+                iheartUrl={episode.iheartUrl}
               />
             </div>
           </section>

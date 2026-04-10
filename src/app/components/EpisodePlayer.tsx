@@ -15,6 +15,7 @@ interface EpisodePlayerProps {
   spotifyUrl?: string;
   youtubeUrl?: string;
   amazonUrl?: string;
+  iheartUrl?: string;
 }
 
 const SPEEDS = [1, 1.25, 1.5, 1.75, 2, 0.75];
@@ -39,6 +40,7 @@ export default function EpisodePlayer({
   spotifyUrl,
   youtubeUrl,
   amazonUrl,
+  iheartUrl,
 }: EpisodePlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
@@ -123,6 +125,7 @@ export default function EpisodePlayer({
     { label: 'Spotify', url: spotifyUrl },
     { label: 'YouTube', url: youtubeUrl },
     { label: 'Amazon Music', url: amazonUrl },
+    { label: 'iHeart', url: iheartUrl },
   ];
 
   return (

@@ -19,6 +19,7 @@ export interface Episode {
   spotifyUrl?: string;
   youtubeUrl?: string;
   amazonUrl?: string;
+  iheartUrl?: string;
   keywords?: string;
   frameworks?: string;
   showNotes: unknown;

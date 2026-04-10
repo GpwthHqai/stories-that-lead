@@ -77,6 +77,9 @@ export default config({
         amazonUrl: fields.url({
           label: "Amazon Music URL",
         }),
+        iheartUrl: fields.url({
+          label: "iHeart Radio URL",
+        }),
         audioUrl: fields.text({
           label: "Direct Audio URL",
           description: "Direct MP3 URL from RSS feed (powers the custom player)",
