@@ -23,8 +23,11 @@ export function LaunchBadge({
   const text = !mounted ? preText : expired ? liveText : preText;
 
   return (
-    <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full text-gold text-sm mb-6">
-      <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+    <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-navy-dark/60 border border-red-500/40 rounded-full text-red-500 text-sm font-semibold mb-6">
+      <span className="relative flex h-2 w-2">
+        <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
+        <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
+      </span>
       {text}
     </div>
   );
@@ -82,8 +85,11 @@ export function CountdownTimer({ targetDate }: { targetDate: string }) {
   if (expired) {
     return (
       <div className="text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gold/10 border border-gold/20 rounded-full text-gold text-sm mb-6">
-          <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-navy-dark/60 border border-red-500/40 rounded-full text-red-500 text-sm font-semibold mb-6">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
+          </span>
           Now Live
         </div>
         <h3

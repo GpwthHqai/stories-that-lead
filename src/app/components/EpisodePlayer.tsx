@@ -289,12 +289,8 @@ export default function EpisodePlayer({
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs bg-navy-light/30 text-gray-300 border border-navy-light/30 hover:border-gold/50 hover:text-gold transition-colors"
+                className="px-3 py-1.5 rounded-full text-xs bg-navy-light/30 text-gray-300 border border-navy-light/30 hover:border-gold/50 hover:text-gold transition-colors"
               >
-                <span className="relative flex h-1.5 w-1.5">
-                  <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
-                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-red-500" />
-                </span>
                 {label}
               </a>
             );

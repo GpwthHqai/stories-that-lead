@@ -228,28 +228,55 @@ export default async function EpisodePage({
             {/* Platform Links */}
             {(episode.appleUrl || episode.spotifyUrl || episode.youtubeUrl || episode.amazonUrl || episode.iheartUrl) && (
               <div className="flex flex-wrap gap-3 mt-6">
-                {[
-                  { label: 'Apple Podcasts', url: episode.appleUrl },
-                  { label: 'Spotify', url: episode.spotifyUrl },
-                  { label: 'YouTube', url: episode.youtubeUrl },
-                  { label: 'Amazon Music', url: episode.amazonUrl },
-                  { label: 'iHeart', url: episode.iheartUrl },
-                ].map(({ label, url }) =>
-                  url ? (
-                    <a
-                      key={label}
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-navy-light/30 border border-navy-light/30 rounded-lg text-sm text-gray-300 hover:border-gold/50 hover:text-gold transition-colors"
-                    >
-                      <span className="relative flex h-2 w-2">
-                        <span className="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping" />
-                        <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500" />
-                      </span>
-                      {label}
-                    </a>
-                  ) : null
+                {episode.appleUrl && (
+                  <a
+                    href={episode.appleUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-navy-light/30 border border-navy-light/30 rounded-lg text-sm text-gray-300 hover:border-gold/50 hover:text-gold transition-colors"
+                  >
+                    Apple Podcasts
+                  </a>
+                )}
+                {episode.spotifyUrl && (
+                  <a
+                    href={episode.spotifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-navy-light/30 border border-navy-light/30 rounded-lg text-sm text-gray-300 hover:border-gold/50 hover:text-gold transition-colors"
+                  >
+                    Spotify
+                  </a>
+                )}
+                {episode.youtubeUrl && (
+                  <a
+                    href={episode.youtubeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-navy-light/30 border border-navy-light/30 rounded-lg text-sm text-gray-300 hover:border-gold/50 hover:text-gold transition-colors"
+                  >
+                    YouTube
+                  </a>
+                )}
+                {episode.amazonUrl && (
+                  <a
+                    href={episode.amazonUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-navy-light/30 border border-navy-light/30 rounded-lg text-sm text-gray-300 hover:border-gold/50 hover:text-gold transition-colors"
+                  >
+                    Amazon Music
+                  </a>
+                )}
+                {episode.iheartUrl && (
+                  <a
+                    href={episode.iheartUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-navy-light/30 border border-navy-light/30 rounded-lg text-sm text-gray-300 hover:border-gold/50 hover:text-gold transition-colors"
+                  >
+                    iHeart
+                  </a>
                 )}
               </div>
             )}
