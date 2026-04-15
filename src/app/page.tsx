@@ -33,7 +33,7 @@ export default function Home() {
               href="#signup"
               className="px-5 py-2 bg-gold/10 border border-gold/30 text-gold text-sm font-semibold rounded-lg hover:bg-gold/20 transition-colors"
             >
-              Get Early Access
+              Get Insider Access
             </a>
           </div>
         </div>
