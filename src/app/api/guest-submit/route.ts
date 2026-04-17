@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 import crypto from "crypto";
-import { resend, FROM_ADDRESS } from "@/lib/resend";
+import { getResend, FROM_ADDRESS } from "@/lib/resend";
 import { isValidEmail } from "@/lib/validation";
 import { checkRateLimit, getClientIP } from "@/lib/rate-limit";
 import {
@@ -183,7 +183,7 @@ export async function POST(request: NextRequest) {
         topicPitch: textFields.topicPitch,
       });
 
-    const { error: guestEmailError } = await resend.emails.send({
+    const { error: guestEmailError } = await getResend().emails.send({
       from: FROM_ADDRESS,
       to: textFields.email,
       replyTo: VERNON_EMAIL,
@@ -206,7 +206,7 @@ export async function POST(request: NextRequest) {
         revelationMoment: textFields.revelationMoment,
       });
 
-    const { error: notifyError } = await resend.emails.send({
+    const { error: notifyError } = await getResend().emails.send({
       from: FROM_ADDRESS,
       to: VERNON_EMAIL,
       subject: notifySubject,

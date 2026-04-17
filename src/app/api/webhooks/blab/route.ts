@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { resend, FROM_ADDRESS } from "@/lib/resend";
+import { getResend, FROM_ADDRESS } from "@/lib/resend";
 import { bookingConfirmationEmail } from "@/lib/emails";
 import { checkRateLimit, getClientIP } from "@/lib/rate-limit";
 
@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
             prepFormUrl: PREP_FORM_URL,
           });
 
-          const { error } = await resend.emails.send({
+          const { error } = await getResend().emails.send({
             from: FROM_ADDRESS,
             to: guestEmail,
             replyTo: VERNON_EMAIL,
@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
           }
 
           // Notify Vernon
-          await resend.emails.send({
+          await getResend().emails.send({
             from: FROM_ADDRESS,
             to: VERNON_EMAIL,
             subject: `New STL booking: ${guestName}`,
@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
         console.log(`[BLAB Webhook] Booking cancelled: ${guestEmail}`);
 
         // Notify Vernon of cancellation
-        await resend.emails.send({
+        await getResend().emails.send({
           from: FROM_ADDRESS,
           to: VERNON_EMAIL,
           subject: `STL booking cancelled: ${guestName}`,
@@ -126,7 +126,7 @@ export async function POST(request: NextRequest) {
         );
 
         // Notify Vernon of reschedule
-        await resend.emails.send({
+        await getResend().emails.send({
           from: FROM_ADDRESS,
           to: VERNON_EMAIL,
           subject: `STL booking rescheduled: ${guestName}`,
