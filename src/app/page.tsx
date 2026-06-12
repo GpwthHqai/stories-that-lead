@@ -226,7 +226,7 @@ export default function Home() {
             Founding Member <span className="text-gold">Perks</span>
           </h2>
           <p className="text-gray-400 mt-4 text-lg max-w-xl mx-auto">
-            Join before launch and get access others won&apos;t.
+            Join the founding members and get access others won&apos;t.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-6 mt-12 text-left">
@@ -346,12 +346,12 @@ export default function Home() {
             className="text-3xl lg:text-4xl font-bold"
             style={{ fontFamily: "var(--font-playfair), serif" }}
           >
-            Don&apos;t miss the first episode.
+            The show is live. Don&apos;t miss what&apos;s next.
           </h2>
           <p className="text-gray-300 text-lg mt-4 max-w-lg mx-auto">
-            Join the founding members list and be part of the launch.
-            You&apos;ll get early access, exclusive frameworks, and your
-            personalized leadership assessment &mdash; immediately.
+            Join the founding members list and get every new episode early,
+            plus exclusive frameworks and your personalized leadership
+            assessment, immediately.
           </p>
           <div className="mt-8">
             <EmailSignupForm

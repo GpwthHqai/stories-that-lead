@@ -12,15 +12,23 @@ export function LaunchBadge({
   preText?: string;
   liveText?: string;
 }) {
-  const [mounted, setMounted] = useState(false);
-  const [expired, setExpired] = useState(false);
+  // Compute the launched state at initial render so the SAME value is produced
+  // on the server and on the client's first render. Crawlers and AI fetchers
+  // that never run JS get the correct "Now Live" markup, with no hydration
+  // mismatch because a past launch date resolves identically in both places.
+  const [live, setLive] = useState(
+    () => new Date(targetDate).getTime() - Date.now() <= 0
+  );
 
   useEffect(() => {
-    setMounted(true);
-    setExpired(new Date(targetDate).getTime() - new Date().getTime() <= 0);
-  }, [targetDate]);
+    if (live) return;
+    const timer = setInterval(() => {
+      if (new Date(targetDate).getTime() - Date.now() <= 0) setLive(true);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [targetDate, live]);
 
-  const text = !mounted ? preText : expired ? liveText : preText;
+  const text = live ? liveText : preText;
 
   return (
     <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-navy-dark/60 border border-red-500/40 rounded-full text-red-500 text-sm font-semibold mb-6">
@@ -47,39 +55,25 @@ export function CountdownTimer({ targetDate }: { targetDate: string }) {
   }, [targetDate]);
 
   const isExpired = useCallback(() => {
-    return new Date(targetDate).getTime() - new Date().getTime() <= 0;
+    return new Date(targetDate).getTime() - Date.now() <= 0;
   }, [targetDate]);
 
-  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
+  // The launched/expired decision is computed at initial render so the server
+  // (and any non-JS crawler) emits the correct state. A past launch date
+  // resolves the same on server and client, so there is no hydration mismatch.
+  const [expired, setExpired] = useState(isExpired);
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
   const [mounted, setMounted] = useState(false);
-  const [expired, setExpired] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    setExpired(isExpired());
+    if (expired) return;
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
       if (isExpired()) setExpired(true);
     }, 1000);
     return () => clearInterval(timer);
-  }, [calculateTimeLeft, isExpired]);
-
-  if (!mounted) {
-    return (
-      <div className="flex gap-4 justify-center">
-        {["Days", "Hours", "Min", "Sec"].map((label) => (
-          <div key={label} className="text-center">
-            <div className="bg-navy-light/50 border border-navy-light rounded-lg w-20 h-20 flex items-center justify-center">
-              <span className="text-3xl font-bold text-gold">--</span>
-            </div>
-            <span className="text-xs text-gray-400 mt-2 block uppercase tracking-wider">
-              {label}
-            </span>
-          </div>
-        ))}
-      </div>
-    );
-  }
+  }, [calculateTimeLeft, isExpired, expired]);
 
   // ── Post-Launch State ──
   if (expired) {
@@ -133,7 +127,7 @@ export function CountdownTimer({ targetDate }: { targetDate: string }) {
           <div key={label} className="text-center">
             <div className="bg-navy-light/50 border border-navy-light rounded-lg w-20 h-20 flex items-center justify-center">
               <span className="text-3xl font-bold text-gold">
-                {String(value).padStart(2, "0")}
+                {mounted ? String(value).padStart(2, "0") : "--"}
               </span>
             </div>
             <span className="text-xs text-gray-400 mt-2 block uppercase tracking-wider">
@@ -472,8 +466,8 @@ export function LeadershipAssessment() {
         </h3>
         <p className="text-gray-300 mt-4 max-w-lg mx-auto leading-relaxed">
           Answer 5 quick questions to uncover which storytelling and leadership
-          framework fits your role &mdash; plus get personalized episode
-          recommendations when we launch.
+          framework fits your role, plus get personalized episode
+          recommendations to start with.
         </p>
         <button onClick={() => setStep(1)} className="mt-8 px-8 py-4 bg-gold hover:bg-gold-light text-navy-dark font-bold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-gold/20 text-lg">
           Start the Assessment
