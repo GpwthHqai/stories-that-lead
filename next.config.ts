@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
           "/?utm_source=ali&utm_medium=qr&utm_campaign=vti_virtual_2026",
         permanent: false,
       },
+      {
+        source: "/episodes/fly-on-the-wall-ai-instinct-internal-comms",
+        destination: "/episodes/fly-on-the-wall",
+        permanent: true,
+      },
     ];
   },
 
