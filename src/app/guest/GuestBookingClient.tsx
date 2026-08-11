@@ -1,6 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+
+const DRAFT_KEY = "stl-guest-draft";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface FormData {
@@ -295,6 +297,41 @@ export default function GuestBookingClient() {
   const [mediaKit, setMediaKit] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const firstSave = useRef(true);
+
+  // On mount (client only): honor a ?step= deep link so a guest can be sent
+  // straight to the form or the uploads step, and restore any saved draft so
+  // someone who left mid-form does not start over.
+  useEffect(() => {
+    const step = new URLSearchParams(window.location.search).get("step");
+    const stepMap: Record<string, number> = {
+      form: 1, info: 1, "your-info": 1,
+      story: 2, "your-story": 2,
+      media: 3, "media-kit": 3, uploads: 3,
+    };
+    if (step && stepMap[step] !== undefined) setCurrentStep(stepMap[step]);
+
+    try {
+      const saved = localStorage.getItem(DRAFT_KEY);
+      if (saved) setFormData((prev) => ({ ...prev, ...JSON.parse(saved) }));
+    } catch {
+      /* ignore corrupt or unavailable draft */
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Autosave text answers to the browser so returning to the page restores them.
+  useEffect(() => {
+    if (firstSave.current) {
+      firstSave.current = false;
+      return;
+    }
+    try {
+      localStorage.setItem(DRAFT_KEY, JSON.stringify(formData));
+    } catch {
+      /* storage unavailable — non-fatal */
+    }
+  }, [formData]);
 
   const STEPS = ["Your Info", "Your Story", "Media Kit"];
 
@@ -345,6 +382,12 @@ export default function GuestBookingClient() {
 
       if (!res.ok) throw new Error("Submission failed");
 
+      // Clear the saved draft now that it is submitted.
+      try {
+        localStorage.removeItem(DRAFT_KEY);
+      } catch {
+        /* non-fatal */
+      }
       setCurrentStep(4);
     } catch {
       setSubmitError(
