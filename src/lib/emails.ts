@@ -226,6 +226,7 @@ export function guestNotificationEmail({
   title,
   topicPitch,
   revelationMoment,
+  files = [],
 }: {
   guestName: string;
   guestEmail: string;
@@ -233,7 +234,22 @@ export function guestNotificationEmail({
   title: string;
   topicPitch: string;
   revelationMoment: string;
+  files?: { label: string; filename: string; url?: string }[];
 }): { subject: string; html: string } {
+  const filesHtml = files.length
+    ? `
+        <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;" />
+        <h3 style="margin: 0 0 8px; font-size: 14px; color: #6b7280;">Media Files</h3>
+        <ul style="margin: 0 0 16px; padding-left: 18px; font-size: 14px; line-height: 1.8;">
+          ${files
+            .map((f) =>
+              f.url
+                ? `<li><strong>${f.label}:</strong> <a href="${f.url}">${f.filename}</a></li>`
+                : `<li><strong>${f.label}:</strong> ${f.filename} (attached to this email)</li>`
+            )
+            .join("")}
+        </ul>`
+    : "";
   return {
     subject: `New STL Guest: ${guestName} (${company})`,
     html: `
@@ -254,7 +270,7 @@ export function guestNotificationEmail({
 
         <h3 style="margin: 0 0 8px; font-size: 14px; color: #6b7280;">Revelation Moment</h3>
         <p style="margin: 0 0 16px; font-size: 14px; line-height: 1.6;">${revelationMoment}</p>
-
+${filesHtml}
         <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;" />
         <p style="font-size: 12px; color: #9ca3af;">Submitted via storiesthatlead.co/guest</p>
       </div>

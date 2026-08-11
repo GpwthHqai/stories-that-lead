@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
+import { put } from "@vercel/blob";
 import path from "path";
 import crypto from "crypto";
 import { getResend, FROM_ADDRESS } from "@/lib/resend";
@@ -17,8 +17,14 @@ import {
  * saves file uploads, sends confirmation emails, and notifies Vernon.
  */
 
-const UPLOAD_DIR = process.env.GUEST_UPLOAD_DIR || "/tmp/stl-guest-uploads";
 const VERNON_EMAIL = process.env.VERNON_EMAIL || "vernon@vernonross.com";
+
+const FILE_LABELS: Record<string, string> = {
+  headshot: "Headshot",
+  logo: "Logo",
+  promoImage: "Promo Image",
+  mediaKit: "Media Kit",
+};
 
 // ── File Upload Security ─────────────────────────────────────────────────────
 const ALLOWED_MIME_TYPES = new Set([
@@ -99,79 +105,78 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create upload directory for this guest
+    // Stable path prefix per guest, used for durable object storage.
     const sanitizedName = textFields.fullName
       .toLowerCase()
       .replace(/[^a-z0-9]/g, "-")
       .replace(/-+/g, "-");
     const timestamp = new Date().toISOString().split("T")[0];
-    const guestDir = path.join(UPLOAD_DIR, `${timestamp}-${sanitizedName}`);
-    await mkdir(guestDir, { recursive: true });
+    const folder = `guest-uploads/${timestamp}-${sanitizedName}`;
 
-    // Save uploaded files with security validation
-    const fileKeys = ["headshot", "logo", "promoImage", "mediaKit"];
-    const fileFields: Record<string, string[]> = {};
+    // Validate + persist uploaded files. Primary: durable Vercel Blob storage
+    // (returns a link). Fallback if Blob is not configured: attach to the
+    // notification email so the file is never silently lost.
+    const hasBlob = !!process.env.BLOB_READ_WRITE_TOKEN;
+    const emailFiles: { label: string; filename: string; url?: string }[] = [];
+    const attachments: { filename: string; content: string }[] = [];
     let totalFileSize = 0;
 
-    for (const key of fileKeys) {
-      const files = formData.getAll(key);
-      fileFields[key] = [];
+    for (const key of Object.keys(FILE_LABELS)) {
+      for (const file of formData.getAll(key)) {
+        if (!(file instanceof File) || file.size === 0) continue;
 
-      for (const file of files) {
-        if (file instanceof File && file.size > 0) {
-          // Validate file size
-          if (file.size > MAX_FILE_SIZE) {
-            return NextResponse.json(
-              { error: `File "${file.name}" exceeds 10MB limit` },
-              { status: 400 }
-            );
+        if (file.size > MAX_FILE_SIZE) {
+          return NextResponse.json(
+            { error: `File "${file.name}" exceeds 10MB limit` },
+            { status: 400 }
+          );
+        }
+        totalFileSize += file.size;
+        if (totalFileSize > MAX_TOTAL_SIZE) {
+          return NextResponse.json(
+            { error: "Total upload size exceeds 40MB limit" },
+            { status: 400 }
+          );
+        }
+        if (!ALLOWED_MIME_TYPES.has(file.type)) {
+          return NextResponse.json(
+            {
+              error: `File type "${file.type}" not allowed. Accepted: images (JPEG, PNG, WebP, GIF, SVG), PDF, ZIP`,
+            },
+            { status: 400 }
+          );
+        }
+
+        const buffer = Buffer.from(await file.arrayBuffer());
+        const ext = MIME_TO_EXT[file.type] || path.extname(file.name).toLowerCase();
+        const objectName = `${folder}/${key}-${crypto.randomBytes(8).toString("hex")}${ext}`;
+
+        let stored = false;
+        if (hasBlob) {
+          try {
+            const blob = await put(objectName, buffer, {
+              access: "public",
+              contentType: file.type,
+              addRandomSuffix: false,
+            });
+            emailFiles.push({ label: FILE_LABELS[key], filename: file.name, url: blob.url });
+            stored = true;
+          } catch (err) {
+            console.error("[Guest Submit] Blob upload failed, attaching to email instead:", err);
           }
-          totalFileSize += file.size;
-          if (totalFileSize > MAX_TOTAL_SIZE) {
-            return NextResponse.json(
-              { error: "Total upload size exceeds 40MB limit" },
-              { status: 400 }
-            );
-          }
-
-          // Validate MIME type
-          if (!ALLOWED_MIME_TYPES.has(file.type)) {
-            return NextResponse.json(
-              {
-                error: `File type "${file.type}" not allowed. Accepted: images (JPEG, PNG, WebP, GIF, SVG), PDF, ZIP`,
-              },
-              { status: 400 }
-            );
-          }
-
-          const bytes = await file.arrayBuffer();
-          const buffer = Buffer.from(bytes);
-
-          // Use crypto-random filename with correct extension from MIME type
-          const ext = MIME_TO_EXT[file.type] || path.extname(file.name).toLowerCase();
-          const randomName = crypto.randomBytes(16).toString("hex");
-          const filePath = path.join(guestDir, `${key}-${randomName}${ext}`);
-          await writeFile(filePath, buffer);
-          fileFields[key].push(filePath);
+        }
+        if (!stored) {
+          attachments.push({ filename: `${key}-${file.name}`, content: buffer.toString("base64") });
+          emailFiles.push({ label: FILE_LABELS[key], filename: file.name });
         }
       }
     }
 
-    // Save submission metadata as JSON
-    const submission = {
-      ...textFields,
-      files: fileFields,
-      submittedAt: new Date().toISOString(),
-      uploadDir: guestDir,
-    };
-
-    const metaPath = path.join(guestDir, "submission.json");
-    await writeFile(metaPath, JSON.stringify(submission, null, 2));
-
     console.log(
       "[Guest Submit] New guest application:",
       textFields.fullName,
-      textFields.email
+      textFields.email,
+      `(${emailFiles.length} file(s) via ${hasBlob ? "blob" : "email attachment"})`
     );
 
     // ── Send Emails ──────────────────────────────────────────────────────
@@ -204,6 +209,7 @@ export async function POST(request: NextRequest) {
         title: textFields.title,
         topicPitch: textFields.topicPitch,
         revelationMoment: textFields.revelationMoment,
+        files: emailFiles,
       });
 
     const { error: notifyError } = await getResend().emails.send({
@@ -211,6 +217,7 @@ export async function POST(request: NextRequest) {
       to: VERNON_EMAIL,
       subject: notifySubject,
       html: notifyHtml,
+      ...(attachments.length ? { attachments } : {}),
     });
 
     if (notifyError) {
