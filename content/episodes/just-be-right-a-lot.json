@@ -8,7 +8,7 @@
   "guestLinkedIn": "https://www.linkedin.com/in/christinafrantom/",
   "duration": "45 min",
   "coverImage": null,
-  "embedCode": "",
+  "embedCode": "<iframe id=\"hypecastIframe\" src=https://vernonross.hypecast.one/iframe-plugin/iframe-player?episodeId=b80bb9be-480f-4633-aeb5-46b1f9eb7bf6 width=\"100%\" frameborder=\"0\" scrolling=\"no\" ></iframe>\n<script src=\"https://vernonross.hypecast.one/js/iframe-resizer.bundle.js\"></script>",
   "audioUrl": "https://sphinx.acast.com/p/open/s/69a18dd5519334f049dcd8f2/e/6a9b41c13559f1747890af9b/media.mp3",
   "artworkUrl": "https://assets.pippa.io/shows/69a18dd5519334f049dcd8f2/263de037-50f5-4111-94f3-0352ff6e99f0.png",
   "spotifyUrl": "https://open.spotify.com/show/0FY4pghyabqr8lmKkv7T9q?si=9-m60PHaSCOIqTHsOm6aCg",
